@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node server.js",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
@@ -11,5 +14,15 @@
     "mysql2": "^1.5.2",
     "sequelize": "^4.37.0",
     "serve-favicon": "~2.4.5"
+  },
+  "devDependencies": {
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "src/*",
+      "public/*"
+    ]
   }
 }
