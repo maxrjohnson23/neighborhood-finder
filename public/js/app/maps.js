@@ -185,7 +185,6 @@ module.exports=require("/Code/html/themes/real-estate-1.2.0/lib/layout/js/_skin.
 
             $('[data-scrollable]', $el).niceScroll({
                 cursorborder: 0,
-                cursorcolor: config.skins[ skin ][ 'primary-color' ],
                 horizrailenabled: false
             });
 
@@ -253,7 +252,7 @@ function loadScript() {
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +
-    'callback=initGoogleMaps';
+        'callback=initGoogleMaps&key=AIzaSyALJDYf2H96RBV3sMxU9TetIrNBSREnfMU';
     document.body.appendChild(script);
 }
 
@@ -624,7 +623,6 @@ module.exports = function () {
 
                 $('[data-scrollable]', toggleStyleWrapper).niceScroll({
                     cursorborder: 0,
-                    cursorcolor: config.skins[ skin ][ 'primary-color' ],
                     horizrailenabled: false
                 });
 

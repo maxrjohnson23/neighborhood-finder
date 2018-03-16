@@ -491,7 +491,6 @@ module.exports = function(urls, callback) {
 
         var nice = this.niceScroll({
             cursorborder: 0,
-            cursorcolor: config.skins[ skin ][ 'primary-color' ],
             horizrailenabled: settings.horizontal
         });
 

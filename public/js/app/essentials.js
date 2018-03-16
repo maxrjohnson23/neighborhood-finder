@@ -813,7 +813,6 @@ module.exports = (function () {
     $('.tabbable .nav-tabs').each(function(){
         var tabs = $(this).niceScroll({
             cursorborder: 0,
-            cursorcolor: config.skins[ skin ][ 'primary-color' ],
             horizrailenabled: true,
             oneaxismousemode: true
         });
