@@ -2,387 +2,430 @@
 <html class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l1" lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>Real Estate</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Real Estate</title>
 
-  <link href="css/vendor/bootstrap.css" rel="stylesheet">
-  <link href="css/vendor/font-awesome.css" rel="stylesheet">
-  <link href="css/vendor/picto.css" rel="stylesheet">
-  <link href="css/vendor/material-design-iconic-font.css" rel="stylesheet">
-  <link href="css/vendor/datepicker3.css" rel="stylesheet">
-  <link href="css/vendor/jquery.minicolors.css" rel="stylesheet">
-  <link href="css/vendor/bootstrap-slider.css" rel="stylesheet">
-  <link href="css/vendor/railscasts.css" rel="stylesheet">
-  <link href="css/vendor/jquery-jvectormap.css" rel="stylesheet">
-  <link href="css/vendor/owl.carousel.css" rel="stylesheet">
-  <link href="css/vendor/slick.css" rel="stylesheet">
-  <link href="css/vendor/morris.css" rel="stylesheet">
-  <link href="css/vendor/ui.fancytree.css" rel="stylesheet">
-  <link href="css/vendor/daterangepicker-bs3.css" rel="stylesheet">
-  <link href="css/vendor/jquery.bootstrap-touchspin.css" rel="stylesheet">
-  <link href="css/vendor/select2.css" rel="stylesheet">
+    <link href="css/vendor/bootstrap.css" rel="stylesheet">
+    <link href="css/vendor/font-awesome.css" rel="stylesheet">
+    <link href="css/vendor/picto.css" rel="stylesheet">
+    <link href="css/vendor/material-design-iconic-font.css" rel="stylesheet">
+    <link href="css/vendor/datepicker3.css" rel="stylesheet">
+    <link href="css/vendor/jquery.minicolors.css" rel="stylesheet">
+    <link href="css/vendor/bootstrap-slider.css" rel="stylesheet">
+    <link href="css/vendor/railscasts.css" rel="stylesheet">
+    <link href="css/vendor/jquery-jvectormap.css" rel="stylesheet">
+    <link href="css/vendor/owl.carousel.css" rel="stylesheet">
+    <link href="css/vendor/slick.css" rel="stylesheet">
+    <link href="css/vendor/morris.css" rel="stylesheet">
+    <link href="css/vendor/ui.fancytree.css" rel="stylesheet">
+    <link href="css/vendor/daterangepicker-bs3.css" rel="stylesheet">
+    <link href="css/vendor/jquery.bootstrap-touchspin.css" rel="stylesheet">
+    <link href="css/vendor/select2.css" rel="stylesheet">
 
-  <link href="css/app/main.css" rel="stylesheet">
-  <link href="css/app/essentials.css" rel="stylesheet"/>
-  <link href="css/app/layout.css" rel="stylesheet"/>
-  <link href="css/app/sidebar.css" rel="stylesheet"/>
-  <link href="css/app/sidebar-skins.css" rel="stylesheet"/>
-  <link href="css/app/navbar.css" rel="stylesheet"/>
-  <link href="css/app/media.css" rel="stylesheet"/>
-  <link href="css/app/maps.css" rel="stylesheet"/>
-  <link href="css/app/colors-buttons.css" rel="stylesheet"/>
-  <link href="css/app/colors-text.css" rel="stylesheet"/>
+    <link href="css/app/main.css" rel="stylesheet">
+    <link href="css/app/essentials.css" rel="stylesheet"/>
+    <link href="css/app/layout.css" rel="stylesheet"/>
+    <link href="css/app/sidebar.css" rel="stylesheet"/>
+    <link href="css/app/sidebar-skins.css" rel="stylesheet"/>
+    <link href="css/app/navbar.css" rel="stylesheet"/>
+    <link href="css/app/media.css" rel="stylesheet"/>
+    <link href="css/app/maps.css" rel="stylesheet"/>
+    <link href="css/app/colors-buttons.css" rel="stylesheet"/>
+    <link href="css/app/colors-text.css" rel="stylesheet"/>
 
 
 </head>
 
 <body>
 
-  <!-- Wrapper required for sidebar transitions -->
-  <div class="st-container">
+    <!-- Wrapper required for sidebar transitions -->
+    <div class="st-container">
 
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#sidebar-menu" data-toggle="sidebar-menu"
+                       class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#main-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-          <a class="navbar-brand" href="index.html">Real Estate</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="main-nav">
-          <form class="navbar-form navbar-left margin-none ">
-            <div class="search-1">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="icon-search"></i></span>
-                <input type="text" class="form-control form-control-w-150" placeholder="Search ..">
-              </div>
-            </div>
-          </form>
-          <ul class="nav navbar-nav navbar-right ">
-            <!-- Login -->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-fw fa-lock"></i> Login
-              </a>
-              <div class="dropdown-menu dropdown-size-280">
-                <form>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                      <input type="text" class="form-control" placeholder="Username">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="fa fa-shield"></i></span>
-                      <input type="password" class="form-control" placeholder="Password">
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Login <i class="fa fa-sign-in"></i></button>
-                  </div>
-                </form>
-              </div>
-            </li>
-            <!-- // END login -->
-            <!-- Sign up -->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-fw fa-plus"></i> Sign Up
-              </a>
-              <div class="dropdown-menu dropdown-size-280">
-                <form>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group form-control-default">
-                        <label for="exampleInputFirstName">First name</label>
-                        <input type="email" class="form-control" id="exampleInputFirstName" placeholder="Your first name">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group form-control-default">
-                        <label for="exampleInputLastName">Last name</label>
-                        <input type="email" class="form-control" id="exampleInputLastName" placeholder="Your last name">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group form-control-default required">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group form-control-default required">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-              </div>
-            </li>
-            <!-- // END sign up -->
-            <!-- user -->
-            <li class="dropdown user">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="images/people/110/guy-6.jpg" alt="" class="img-circle" /> Bill<span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#"><i class="fa fa-user"></i>Profile</a></li>
-                <li><a href="#"><i class="fa fa-wrench"></i>Settings</a></li>
-                <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
-              </ul>
-            </li>
-            <!-- // END user -->
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-
-      </div>
-    </nav>
-
-    <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-    <aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
-      <div data-scrollable>
-        <ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
-          <li class="hasSubmenu">
-            <a href="#discover"><i class="fa fa-star"></i><span>Discover</span></a>
-            <ul id="discover">
-              <li><a href="index.html"><i class="fa fa-map-marker"></i><span>Full screen Map</span></a></li>
-              <li><a href="map-listing-list.html"><i class="fa fa-list"></i><span>Map Listing - List</span></a></li>
-              <li><a href="map-listing-grid.html"><i class="fa fa-th"></i><span>Map Listing - Grid</span></a></li>
-              <li><a href="listing-map.html"><i class="fa fa-map-marker"></i><span>Listing - Map</span></a></li>
-            </ul>
-          </li>
-          <li><a href="map-edit.html"><i class="fa fa-pencil"></i><span>Add property</span></a></li>
-        </ul>
-        <h4 class="category">Map features</h4>
-        <ul class="sidebar-menu sm-icons-block sm-active-item-bg sm-icons-right">
-          <li class="active"><a href="map-filters.html"><i class="fa fa-search"></i><span>Map Filters</span></a></li>
-        </ul>
-      </div>
-    </aside>
-
-    <!-- sidebar effects OUTSIDE of st-pusher: -->
-    <!-- st-effect-1, st-effect-2, st-effect-4, st-effect-5, st-effect-9, st-effect-10, st-effect-11, st-effect-12, st-effect-13 -->
-
-    <!-- content push wrapper -->
-    <div class="st-pusher">
-
-      <!-- sidebar effects INSIDE of st-pusher: -->
-      <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
-
-      <!-- this is the wrapper for the content -->
-      <div class="st-content">
-
-        <!-- extra div for emulating position:fixed of the menu -->
-        <div class="st-content-inner" id="content">
-
-          <div id="google-fs-realestate" class="maps-google-fs" data-toggle="google-maps" data-file="js/data/google_maps/markers-listing-filters.json" data-filters="true" data-zoom-position="TOP_RIGHT"></div>
-
-          <script id="real-estate-map-pop-1" type="text/x-handlebars-template">
-            <div class="padding-none full">
-              <div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute leftinline margin-none">{{ ribbon_mark_text }}</div>
-              <div class="cover overlay cover-image-full margin-none">
-                <a href="{{ details_url }}" class="thumb" data-height="150px">
-                  <img src="{{ image }}" alt="image" class="img-responsive">
-                </a>
-              </div>
-              <div class="list-group margin-none">
-                <div class="list-group-item">
-                  <a href="{{ details_url }}" class="btn btn-primary btn-circle pull-right">
-                    <i class="fa fa-shopping-cart"></i>
-                  </a>
-                  <h4 class="margin-v-0-5">{{ title }}</h4>
-                  <p class="small">
-                    <span class="fa fa-fw fa-star text-yellow-800"></span>
-                    <span class="fa fa-fw fa-star text-yellow-800"></span>
-                    <span class="fa fa-fw fa-star text-yellow-800"></span>
-                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
-                  </p>
-                  <p>{{ description }}</p>
-                  <label class="label label-grey-100">&euro;{{ price }}</label>&nbsp;
-                  <small>
-
-                    <i class="fa fa-fw icon-home-fill-1"></i> Agency
-
-                  </small>
+                    <a class="navbar-brand" href="index.html">Real Estate</a>
                 </div>
-              </div>
-            </div>
-          </script>
 
-          <script id="real-estate-map-pop_home" type="text/x-handlebars-template">
-            <div class="padding-none">
-              <div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute left inline margin-none">
-                {{ ribbon_mark_text }}
-              </div>
-              <div class="cover cover-image-full margin-none">
-                <a href="{{ details_url }}" class="thumb" data-height="150px">
-                  <img src="{{ image }}" alt="image" class="img-responsive">
-                </a>
-              </div>
-              <div class="text-center">
-                <h4 class="text-primary margin-bottom-none">{{ title }}</h4>
-                <p class="h5 text-muted margin-v-5-15">{{ location }}</p>
-              </div>
-            </div>
-          </script>
-
-          <script id="real-estate-map-pop_profile" type="text/x-handlebars-template">
-            <div class="text-center">
-              <p>
-                <img src="{{ image }}" alt="" class="img-circle" />
-              </p>
-              <h4><a href="{{ details_url }}" class="text-grey-700">{{ name }}</a></h4>
-              <a href="mailto:{{ email }}">{{ email }}</a>
-              <br/>
-              <p class="text-muted"><i class="fa fa-user fa-fw"></i>Agent <i class="fa fa-home fa-fw"></i>{{ no_properties }} Properties</p>
-            </div>
-          </script>
-
-          <script id="real-estate-map-pop_icon" type="text/x-handlebars-template">
-            <div>
-              <div class="text-center">
-                <div class="h1 text-grey-300">
-                  <i class="{{ inner_icon }}"></i>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="main-nav">
+                    <form class="navbar-form navbar-left margin-none ">
+                        <div class="search-1">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-search"></i></span>
+                                <input type="text" class="form-control form-control-w-150"
+                                       placeholder="Search ..">
+                            </div>
+                        </div>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right ">
+                        <!-- Login -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-fw fa-lock"></i> Login
+                            </a>
+                            <div class="dropdown-menu dropdown-size-280">
+                                <form>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-user"></i></span>
+                                            <input type="text" class="form-control"
+                                                   placeholder="Username">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-shield"></i></span>
+                                            <input type="password" class="form-control"
+                                                   placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Login <i
+                                                class="fa fa-sign-in"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <!-- // END login -->
+                        <!-- Sign up -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-fw fa-plus"></i> Sign Up
+                            </a>
+                            <div class="dropdown-menu dropdown-size-280">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-control-default">
+                                                <label for="exampleInputFirstName">First
+                                                    name</label>
+                                                <input type="email" class="form-control"
+                                                       id="exampleInputFirstName"
+                                                       placeholder="Your first name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-control-default">
+                                                <label for="exampleInputLastName">Last name</label>
+                                                <input type="email" class="form-control"
+                                                       id="exampleInputLastName"
+                                                       placeholder="Your last name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-control-default required">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control"
+                                               id="exampleInputEmail1" placeholder="Enter email">
+                                    </div>
+                                    <div class="form-group form-control-default required">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control"
+                                               id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </li>
+                        <!-- // END sign up -->
+                        <!-- user -->
+                        <li class="dropdown user">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="images/people/110/guy-6.jpg" alt="" class="img-circle"/>
+                                Bill<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#"><i class="fa fa-user"></i>Profile</a></li>
+                                <li><a href="#"><i class="fa fa-wrench"></i>Settings</a></li>
+                                <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                        <!-- // END user -->
+                    </ul>
                 </div>
-                <p><a href="{{ details_url }}" class="h4 text-primary">{{ name }}</a></p>
-                <p>{{ location }}</p>
-              </div>
-            </div>
-          </script>
+                <!-- /.navbar-collapse -->
 
-          <script id="map-infobox-profile" type="text/x-handlebars-template">
-            <div class="text-center">
-              <p>
-                <img src="{{ image }}" alt="" class="img-circle" />
-              </p>
-              <h4><a href="{{ details_url }}" class="text-grey-700">{{ name }}</a></h4>
-              <a href="mailto:{{ email }}">{{ email }}</a>
-              <br/>
-              <p class="text-muted"><i class="fa fa-user fa-fw"></i>Agent <i class="fa fa-home fa-fw"></i>{{ no_properties }} Properties</p>
             </div>
-          </script>
+        </nav>
 
-          <script id="map-infobox-icon" type="text/x-handlebars-template">
-            <div>
-              <div class="text-center">
-                <div class="h1 text-grey-300">
-                  <i class="{{ inner_icon }}"></i>
+        <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
+        <aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop"
+               id=sidebar-menu data-type=collapse>
+            <div data-scrollable>
+                <ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
+                    <li class="hasSubmenu">
+                        <a href="#discover"><i class="fa fa-star"></i><span>Discover</span></a>
+                        <ul id="discover">
+                            <li><a href="index.html"><i class="fa fa-map-marker"></i><span>Full screen Map</span></a>
+                            </li>
+                            <li><a href="map-listing-list.html"><i class="fa fa-list"></i><span>Map Listing - List</span></a>
+                            </li>
+                            <li><a href="map-listing-grid.html"><i class="fa fa-th"></i><span>Map Listing - Grid</span></a>
+                            </li>
+                            <li><a href="listing-map.html"><i class="fa fa-map-marker"></i><span>Listing - Map</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="map-edit.html"><i
+                            class="fa fa-pencil"></i><span>Add property</span></a></li>
+                </ul>
+                <h4 class="category">Map features</h4>
+                <ul class="sidebar-menu sm-icons-block sm-active-item-bg sm-icons-right">
+                    <li class="active"><a href="map-filters.html"><i class="fa fa-search"></i><span>Map Filters</span></a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- sidebar effects OUTSIDE of st-pusher: -->
+        <!-- st-effect-1, st-effect-2, st-effect-4, st-effect-5, st-effect-9, st-effect-10, st-effect-11, st-effect-12, st-effect-13 -->
+
+        <!-- content push wrapper -->
+        <div class="st-pusher">
+
+            <!-- sidebar effects INSIDE of st-pusher: -->
+            <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+
+            <!-- this is the wrapper for the content -->
+            <div class="st-content">
+
+                <!-- extra div for emulating position:fixed of the menu -->
+                <div class="st-content-inner" id="content">
+
+                    <div id="google-fs-realestate" class="maps-google-fs" data-toggle="google-maps"
+                         data-file="js/data/google_maps/markers-listing-filters.json"
+                         data-filters="true" data-zoom-position="TOP_RIGHT"></div>
+
+                    <script id="real-estate-map-pop-1" type="text/x-handlebars-template">
+                        <div class="padding-none full">
+                            <div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute leftinline margin-none">
+                                {{ ribbon_mark_text }}
+                            </div>
+                            <div class="cover overlay cover-image-full margin-none">
+                                <a href="{{ details_url }}" class="thumb" data-height="150px">
+                                    <img src="{{ image }}" alt="image" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="list-group margin-none">
+                                <div class="list-group-item">
+                                    <a href="{{ details_url }}"
+                                       class="btn btn-primary btn-circle pull-right">
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </a>
+                                    <h4 class="margin-v-0-5">{{ title }}</h4>
+                                    <p class="small">
+                                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                        <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    </p>
+                                    <p>{{ description }}</p>
+                                    <label class="label label-grey-100">&euro;{{ price }}</label>&nbsp;
+                                    <small>
+
+                                        <i class="fa fa-fw icon-home-fill-1"></i> Agency
+
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </script>
+
+                    <script id="real-estate-map-pop_home" type="text/x-handlebars-template">
+                        <div class="padding-none">
+                            <div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute left inline margin-none">
+                                {{ ribbon_mark_text }}
+                            </div>
+                            <div class="cover cover-image-full margin-none">
+                                <a href="{{ details_url }}" class="thumb" data-height="150px">
+                                    <img src="{{ image }}" alt="image" class="img-responsive">
+                                </a>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="text-primary margin-bottom-none">{{ title }}</h4>
+                                <p class="h5 text-muted margin-v-5-15">{{ location }}</p>
+                            </div>
+                        </div>
+                    </script>
+
+                    <script id="real-estate-map-pop_profile" type="text/x-handlebars-template">
+                        <div class="text-center">
+                            <p>
+                                <img src="{{ image }}" alt="" class="img-circle"/>
+                            </p>
+                            <h4><a href="{{ details_url }}" class="text-grey-700">{{ name }}</a>
+                            </h4>
+                            <a href="mailto:{{ email }}">{{ email }}</a>
+                            <br/>
+                            <p class="text-muted"><i class="fa fa-user fa-fw"></i>Agent <i
+                                    class="fa fa-home fa-fw"></i>{{ no_properties }} Properties</p>
+                        </div>
+                    </script>
+
+                    <script id="real-estate-map-pop_icon" type="text/x-handlebars-template">
+                        <div>
+                            <div class="text-center">
+                                <div class="h1 text-grey-300">
+                                    <i class="{{ inner_icon }}"></i>
+                                </div>
+                                <p><a href="{{ details_url }}" class="h4 text-primary">{{ name
+                                    }}</a></p>
+                                <p>{{ location }}</p>
+                            </div>
+                        </div>
+                    </script>
+
+                    <script id="map-infobox-profile" type="text/x-handlebars-template">
+                        <div class="text-center">
+                            <p>
+                                <img src="{{ image }}" alt="" class="img-circle"/>
+                            </p>
+                            <h4><a href="{{ details_url }}" class="text-grey-700">{{ name }}</a>
+                            </h4>
+                            <a href="mailto:{{ email }}">{{ email }}</a>
+                            <br/>
+                            <p class="text-muted"><i class="fa fa-user fa-fw"></i>Agent <i
+                                    class="fa fa-home fa-fw"></i>{{ no_properties }} Properties</p>
+                        </div>
+                    </script>
+
+                    <script id="map-infobox-icon" type="text/x-handlebars-template">
+                        <div>
+                            <div class="text-center">
+                                <div class="h1 text-grey-300">
+                                    <i class="{{ inner_icon }}"></i>
+                                </div>
+                                <p><a href="#" class="h4 text-primary">{{ name }}</a></p>
+                                <p>{{ description }}</p>
+                            </div>
+                        </div>
+                    </script>
+
+                    <script id="map-infobox-simple" type="text/x-handlebars-template">
+                        <div>
+                            <div class="text-center">
+                                <h1>{{ title }}</h1>
+                                <p>{{ description }}</p>
+                            </div>
+                        </div>
+                    </script>
+
+                    <script id="tpl-edit" type="text/x-handlebars-template">
+                        <div>
+                            <div class="form-group">
+                                <label for="state">State:</label>
+                                <input id="state" disabled class="form-control" type="text"
+                                       value="{{ state }}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Country:</label>
+                                <input id="country" disabled class="form-control" type="text"
+                                       value="{{ country }}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address:</label>
+                                <input id="address" disabled class="form-control" type="text"
+                                       value="{{ address }}"/>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" id="map-delete-marker" data-id="{{ id }}"
+                                        class="btn btn-danger btn-circle"><i
+                                        class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </script>
+
+                    <script id="map-pagination" type="text/x-handlebars-template">
+                        <div id="pagination" class="btn-group btn-group-lg">
+                            <a href="#" class="col-xs-2 back-btn btn btn-inverse">&lsaquo;</a>
+                            <a class="col-xs-8 display btn btn-inverse"></a>
+                            <a href="#" class="col-xs-2 fwd-btn btn btn-inverse">&rsaquo;</a>
+                        </div>
+                    </script>
+
+                    <script id="map-filters-template" type="text/x-handlebars-template">
+                        <div id="radios"
+                             class="map-overlay-sidebar overflow-hidden absolute top bottom left">
+                            <div data-scrollable>
+                                <h4>Filters</h4>
+                                {{#each tags}}
+                                <div class="checkbox checkbox-primary">
+                                    <input type="checkbox" checked id="map-filter-{{ @index }}"
+                                           value="{{ this }}"/>
+                                    <label for="map-filter-{{ @index }}">{{ this }}</label>
+                                </div>
+                                {{/each}}
+                                <hr/>
+                                <p>Enable marker filters by adding the HTML5 attribute <code>data-filters="true"</code>.
+                                    Customize the Handlebars template directly from HTML and specify
+                                    the template id with <code>data-filters-template="#map-filters-template"</code>.
+                                    Check
+                                    the source of this page to see the Handlebars template.</p>
+                            </div>
+                        </div>
+                    </script>
+
+
                 </div>
-                <p><a href="#" class="h4 text-primary">{{ name }}</a></p>
-                <p>{{ description }}</p>
-              </div>
-            </div>
-          </script>
+                <!-- /st-content-inner -->
 
-          <script id="map-infobox-simple" type="text/x-handlebars-template">
-            <div>
-              <div class="text-center">
-                <h1>{{ title }}</h1>
-                <p>{{ description }}</p>
-              </div>
             </div>
-          </script>
-
-          <script id="tpl-edit" type="text/x-handlebars-template">
-            <div>
-              <div class="form-group">
-                <label for="state">State:</label>
-                <input id="state" disabled class="form-control" type="text" value="{{ state }}" />
-              </div>
-              <div class="form-group">
-                <label for="country">Country:</label>
-                <input id="country" disabled class="form-control" type="text" value="{{ country }}" />
-              </div>
-              <div class="form-group">
-                <label for="address">Address:</label>
-                <input id="address" disabled class="form-control" type="text" value="{{ address }}" />
-              </div>
-              <div class="form-group">
-                <button type="button" id="map-delete-marker" data-id="{{ id }}" class="btn btn-danger btn-circle"><i class="fa fa-trash"></i></button>
-              </div>
-            </div>
-          </script>
-
-          <script id="map-pagination" type="text/x-handlebars-template">
-            <div id="pagination" class="btn-group btn-group-lg">
-              <a href="#" class="col-xs-2 back-btn btn btn-inverse">&lsaquo;</a>
-              <a class="col-xs-8 display btn btn-inverse"></a>
-              <a href="#" class="col-xs-2 fwd-btn btn btn-inverse">&rsaquo;</a>
-            </div>
-          </script>
-
-          <script id="map-filters-template" type="text/x-handlebars-template">
-            <div id="radios" class="map-overlay-sidebar overflow-hidden absolute top bottom left">
-              <div data-scrollable>
-                <h4>Filters</h4>
-                {{#each tags}}
-                  <div class="checkbox checkbox-primary">
-                    <input type="checkbox" checked id="map-filter-{{ @index }}" value="{{ this }}" />
-                    <label for="map-filter-{{ @index }}">{{ this }}</label>
-                  </div>
-                {{/each}}
-                <hr/>
-                <p>Enable marker filters by adding the HTML5 attribute <code>data-filters="true"</code>. Customize the Handlebars template directly from HTML and specify the template id with <code>data-filters-template="#map-filters-template"</code>. Check
-                  the source of this page to see the Handlebars template.</p>
-              </div>
-            </div>
-          </script>
-
+            <!-- /st-content -->
 
         </div>
-        <!-- /st-content-inner -->
+        <!-- /st-pusher -->
 
-      </div>
-      <!-- /st-content -->
+        <!-- Footer -->
+        <footer class="footer">
+            <strong>Neighborhood</strong> &copy; Copyright 2018
+        </footer>
+        <!-- // Footer -->
 
     </div>
-    <!-- /st-pusher -->
 
-    <!-- Footer -->
-    <footer class="footer">
-      <strong>Neighborhood</strong> &copy; Copyright 2018
-    </footer>
-    <!-- // Footer -->
+    <script src="js/vendor/core/all.js"></script>
+    <script src="js/vendor/core/jquery.js"></script>
+    <script src="js/vendor/core/bootstrap.js"></script>
+    <script src="js/vendor/core/breakpoints.js"></script>
+    <script src="js/vendor/core/jquery.nicescroll.js"></script>
+    <script src="js/vendor/core/isotope.pkgd.js"></script>
+    <script src="js/vendor/core/packery-mode.pkgd.js"></script>
+    <script src="js/vendor/core/jquery.grid-a-licious.js"></script>
+    <script src="js/vendor/core/jquery.cookie.js"></script>
+    <script src="js/vendor/core/jquery-ui.custom.js"></script>
+    <script src="js/vendor/core/jquery.hotkeys.js"></script>
+    <script src="js/vendor/core/handlebars.js"></script>
+    <script src="js/vendor/core/jquery.hotkeys.js"></script>
+    <script src="js/vendor/core/load_image.js"></script>
+    <script src="js/vendor/core/jquery.debouncedresize.js"></script>
+    <script src="js/vendor/forms/all.js"></script>
+    <script src="js/vendor/media/all.js"></script>
 
-  </div>
-
-  <script src="js/vendor/core/all.js"></script>
-  <script src="js/vendor/core/jquery.js"></script>
-  <script src="js/vendor/core/bootstrap.js"></script>
-  <script src="js/vendor/core/breakpoints.js"></script>
-  <script src="js/vendor/core/jquery.nicescroll.js"></script>
-  <script src="js/vendor/core/isotope.pkgd.js"></script>
-  <script src="js/vendor/core/packery-mode.pkgd.js"></script>
-  <script src="js/vendor/core/jquery.grid-a-licious.js"></script>
-  <script src="js/vendor/core/jquery.cookie.js"></script>
-  <script src="js/vendor/core/jquery-ui.custom.js"></script>
-  <script src="js/vendor/core/jquery.hotkeys.js"></script>
-  <script src="js/vendor/core/handlebars.js"></script>
-  <script src="js/vendor/core/jquery.hotkeys.js"></script>
-  <script src="js/vendor/core/load_image.js"></script>
-  <script src="js/vendor/core/jquery.debouncedresize.js"></script>
-  <script src="js/vendor/forms/all.js"></script>
-  <script src="js/vendor/media/all.js"></script>
-
-  <script src="js/app/essentials.js"></script>
-  <script src="js/app/layout.js"></script>
-  <script src="js/app/sidebar.js"></script>
-  <script src="js/app/media.js"></script>
-  <script src="js/app/maps.js"></script>
-  <script src="js/app/main.js"></script>
+    <script src="js/app/essentials.js"></script>
+    <script src="js/app/layout.js"></script>
+    <script src="js/app/sidebar.js"></script>
+    <script src="js/app/media.js"></script>
+    <script src="js/app/maps.js"></script>
+    <script src="js/app/main.js"></script>
 
 </body>
 
