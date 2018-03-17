@@ -21,13 +21,15 @@ router.post("/api/surveys", function(req, res) {
   db.Surveys.create({
     Age: req.body.age,
     Hobbies: req.body.hobbies,
-    Industry: req.body.industry,
+    Industry: req.body.career,
     Income: req.body.income,
     Education: req.body.education,
-    Children: req.body.children,
+    Children: req.body.kids,
     Pets: req.body.pets,
-    Relationship_Status: req.body.status,
-    Car: req.body.car
+    Relationship_Status: req.body.married,
+    Car: req.body.car,
+    Social: req.body.social,
+    Lifestyle: req.body.lifestyle
   }).then(function(data) {
     res.json({ id: data.insertId });
     // res.redirect("/");
