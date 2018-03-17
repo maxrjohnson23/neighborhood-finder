@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "dev": "nodemon server.js"
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "watch": "webpack --watch"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
