@@ -1,24 +1,29 @@
-// const connection = require("./config/connection");
-const express = require('express');
-const bodyParser = require("body-parser");
-const app = express();
-const PORT = process.env.PORT || 3000;
+var express = require("express");
+var bodyParser = require("body-parser");
+// var exphbs = require("express-handlebars");
 
+var routes = require("./controllers/controller.js");
+var db = require("./models");
+
+var app = express();
+var PORT = process.env.PORT || 3000;
+
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static(__dirname + "/public"));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
 
-// Add Routes
-app.use(express.static(__dirname + '/public'));
-// app.use('/', require('./controllers/burgerController'));
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
 
+app.use(routes);
 
-// Connect to the database and start express server
-// connection.connect(err => {
-//     if (err) {
-//         console.log(err);
-//     } else {
-        app.listen(PORT, () => {
-            console.log(`App listening on port ${PORT}`);
-        });
-//     }
-// });
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App now listening at localhost:" + PORT);
+  });
+});
