@@ -5,8 +5,8 @@
   "scripts": {
     "start": "node server.js",
     "build": "webpack --mode production",
-    "dev": "webpack --mode development",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "dev": "nodemon server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
