@@ -46,6 +46,109 @@
     <!-- Wrapper required for sidebar transitions -->
     <div class="st-container">
 
+            <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">About Me</h4>
+                        </div>
+                        <div class="modal-body">
+                          <h4>Age Range</h4>
+                          <select>
+                              <option value="" disabled="disabled" selected="selected">SELECT AGE...</option>
+                              <option value "1">18 to 22</option>
+                              <option value "2">22 to 25</option>
+                              <option value "3">25 to 30</option>
+                              <option value "4">30 to 40</option>
+                              <option value "5">40 to 50</option>
+                              <option value "6">50 to 70</option>
+                              <option value "7">70+</option>
+                          </select>
+
+                          <h4>Hobbies</h4>
+                          <input type="text" id="address" required>
+
+                          <h4>Career Industry</h4>
+                            <select>
+                                <option value="" disabled="disabled" selected="selected">SELECT INDUSTRY...</option>
+                                <option value "1">AUTO</option>
+                                <option value "2">BIOTECH</option>
+                                <option value "3">BUSINESS SERVICES</option>
+                                <option value "4">ENERGY</option>
+                                <option value "5">FINANCE</option>
+                                <option value "6">INFORMATION TECH</option>
+                                <option value "7">ENTERTAINMENT</option>
+                                <option value "8">HEALTH SERVICES</option>
+                                <option value "9">MANUFACTURING</option>
+                                <option value "10">NON-PROFIT</option>
+                                <option value "11">OTHER</option>
+                            </select>
+
+                          <h4>Income Range</h4>
+                             <select>
+                                <option value="" disabled="disabled" selected="selected">SELECT INCOME...</option>
+                                <option value "1">1 to 30K</option>
+                                <option value "2">30K to 50K</option>
+                                <option value "3">50K to 70K</option>
+                                <option value "4">70K to 100K</option>
+                                <option value "5">100K to 250K</option>
+                                <option value "6">250K to 500K</option>
+                                <option value "7">500K+</option>
+                                <option value "8">N/A</option>
+                            </select>
+
+                          <h4>Education</h4>
+                            <select>
+                                <option value="" disabled="disabled" selected="selected">SELECT SCHOOLING...</option>
+                                <option value "1">HIGH SCHOOL OR GDE</option>
+                                <option value "2">ASSOCIATES DEGREE</option>
+                                <option value "3">BACHELOR'S DEGREE</option>
+                                <option value "4">MASTER'S DEGREE</option>
+                                <option value "5">PHD</option>
+                                <option value "6">N/A</option>
+                            </select>
+
+                          <h4>Kids</h4>
+                          <select>
+                                <option value "1">YES</option>
+                                <option value "2">NO</option>
+                            </select>
+
+                          <h4>Pets</h4>
+                          <select>
+                                <option value "1">YES</option>
+                                <option value "2">NO</option>
+                            </select>
+
+                          <h4>Marital Status</h4>
+                          <select>
+                                <option value "1">MARRIED</option>
+                                <option value "2">SINGLE</option>
+                            </select>
+
+                          <h4>Social Life</h4>
+                          <input type="text" id="address" required>
+
+                          <h4>Car</h4>
+                          <select>
+                                <option value "1">YES</option>
+                                <option value "2">NO</option>
+                            </select>
+
+                          <h4>Lifestyle</h4>
+                          <input type="text" id="address" required>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" id="submitSurvey">SUBMIT</button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+
         <!-- Fixed navbar -->
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container-fluid">
@@ -79,6 +182,9 @@
                     </form>
                     <ul class="nav navbar-nav navbar-right ">
                         <!-- Login -->
+                        <li data-toggle="modal" data-target="#myModal">
+                            Survey
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-fw fa-lock"></i> Login
@@ -497,7 +603,7 @@
                 <!-- extra div for emulating position:fixed of the menu -->
                 <div class="st-content-inner padding-top-none" id="content">
 
-                    <div id="google-fs-realestate" data-toggle="google-maps"
+                    <div id="google-fs-map" data-toggle="google-maps"
                          data-file="js/data/google_maps/markers-listing.json"
                          data-zoom-position="LEFT_BOTTOM" class="maps-google-fs"></div>
 
