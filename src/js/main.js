@@ -1,8 +1,9 @@
 console.log('Custom code loaded');
 
-$("#submitSurvey").on("click", function(){
+$("#submitSurvey").on("click", function(submit){
+    submit.preventDefault();
     var newSurvey = {
-        age: $("#age").val(),
+        age: $("#age").val().trim(),
         hobbies: $("#hobbies").val(),
         education: $("#education").val(),
         income: $("#income").val(),
@@ -15,7 +16,7 @@ $("#submitSurvey").on("click", function(){
         married: $("#married").val()
       };
 
-      console.log(newSurvey);
+      console.log("survey" + newSurvey);
 
     $.post("/api/surveys", newSurvey, function(data) {
         console.log(data);
