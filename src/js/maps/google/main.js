@@ -70,10 +70,7 @@ var infoWindowContent = function (marker) {
     return template(marker);
 };
 
-/**
- * jQuery plugin wrapper for compatibility with Angular UI.Utils: jQuery Passthrough
- */
-$.fn.tkGoogleMap = function () {
+$.fn.googleMap = function () {
 
     if (!this.length) return;
 
@@ -81,7 +78,7 @@ $.fn.tkGoogleMap = function () {
 
     if (typeof google == 'undefined' || typeof InfoBox == 'undefined') {
         setTimeout(function () {
-            container.tkGoogleMap();
+            container.googleMap();
         }, 200);
 
         return;
@@ -89,15 +86,17 @@ $.fn.tkGoogleMap = function () {
 
     var options = {
         mapZoomPosition: container.data('zoomPosition') || "TOP_LEFT",
-        mapZoom: container.data('zoom') || 16,
-        mapStyle: "light-grey",
-        mapType: container.data('type') || "ROADMAP",
+        mapZoom: 12,
+        mapType: "ROADMAP",
         file: container.data('file'),
-        center: container.data('center') ? container.data('center').split(",") : false,
+        // Chicago center
+        center: ["41.88105093780886", "-87.62773873898391"],
         pagination: container.data('pagination') || false,
         paginationPosition: container.data('paginationPosition') || 'TOP_LEFT',
         draggable: container.data('draggable') !== false
     };
+
+    console.log(`Container center: ${options.file}`);
 
     var mapData;
 
@@ -168,8 +167,10 @@ $.fn.tkGoogleMap = function () {
             if (!infoWindowClose(i)) {
                 infoWindowOpen(i, marker);
                 library.centerWindow(container, map, infoWindowData);
+                console.log('"latitude": ' + lat + ', "longitude": ' + lng);
             }
         });
+
 
         google.maps.event.addListener(markerInst, 'dragend', function () {
             var lat = markerInst.getPosition().lat();
@@ -200,7 +201,7 @@ $.fn.tkGoogleMap = function () {
             'streetViewControl': false,
             'mapTypeControl': false,
             'overviewMapControl': false,
-            'scrollwheel': false,
+            'scrollwheel': true,
             'draggable': options.draggable,
             'mapTypeId': google.maps.MapTypeId[options.mapType],
             'zoom': options.mapZoom,
@@ -241,6 +242,7 @@ $.fn.tkGoogleMap = function () {
 
                     });
                 });
+                library.centerMap(container, options.center);
 
             }
             else {
@@ -380,7 +382,7 @@ module.exports = function () {
 
     $('[data-toggle="google-maps"]').each(function () {
 
-        $(this).tkGoogleMap();
+        $(this).googleMap();
 
     });
 

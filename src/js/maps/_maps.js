@@ -3,7 +3,7 @@
 
     $(document).on('map.init', function (event, data) {
 
-        if (data.container.is('#google-fs-realestate')) {
+        if (data.container.is('#google-fs-map')) {
 
             var container = data.container,
                 map = data.map,
