@@ -12,7 +12,8 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mysql2": "^1.5.2",
-    "sequelize": "^4.37.0",
+    "node-geocoder": "^3.22.0",
+    "sequelize": "^4.37.1",
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
