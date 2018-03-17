@@ -2,3 +2,5 @@
     console.log("clicked");
     alert("Clicked");
 };*/
+console.log('Custom code loaded');
+
