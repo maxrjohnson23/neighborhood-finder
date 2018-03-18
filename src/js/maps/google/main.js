@@ -29,35 +29,6 @@ function initScripts() {
         $('head').prepend($(scriptNode));
     });
 
-    $.extend($.ui.gmap.prototype, {
-        pagination: function (prop, mapData) {
-            var source = $("#map-pagination").html();
-            var template = Handlebars.compile(source);
-            var $el = $(template());
-
-            var self = this, i = 0;
-            prop = prop || 'title';
-            self.set('pagination', function (a, b) {
-                if (a) {
-                    i = i + b;
-                    var m = self.get('markers')[i];
-                    mapData.iw.open(i, m.get('content'));
-                    $el.find('.display').text(m[prop]);
-                    self.get('map').panTo(m.getPosition());
-                }
-            });
-            self.get('pagination')(true, 0);
-            $el.find('.back-btn').click(function (e) {
-                e.preventDefault();
-                self.get('pagination')((i > 0), -1, this);
-            });
-            $el.find('.fwd-btn').click(function (e) {
-                e.preventDefault();
-                self.get('pagination')((i < self.get('markers').length - 1), 1, this);
-            });
-            self.addControl($el, google.maps.ControlPosition[mapData.options.paginationPosition]);
-        }
-    });
 }
 
 var library = require('./_library.js')();
@@ -167,7 +138,6 @@ $.fn.googleMap = function () {
             if (!infoWindowClose(i)) {
                 infoWindowOpen(i, marker);
                 library.centerWindow(container, map, infoWindowData);
-                console.log('"latitude": ' + lat + ', "longitude": ' + lng);
             }
         });
 
