@@ -39,89 +39,90 @@
                           <h4 class="modal-title">About Me</h4>
                         </div>
                         <div class="modal-body">
-                          <h4>Age Range</h4>
-                          <select id="age">
-                              <option value="" disabled="disabled" selected="selected">SELECT AGE...</option>
-                              <option value="1">18 to 22</option>
-                              <option value="2">22 to 25</option>
-                              <option value="3">25 to 30</option>
-                              <option value="4">30 to 40</option>
-                              <option value="5">40 to 50</option>
-                              <option value="6">50 to 70</option>
-                              <option value="7">70+</option>
-                          </select>
-
-                          <h4>Hobbies</h4>
-                          <input type="text" id="hobbies" required>
-
-                          <h4>Career Industry</h4>
-                            <select id="career">
-                                <option value="" disabled="disabled" selected="selected">SELECT INDUSTRY...</option>
-                                <option value="1">AUTO</option>
-                                <option value=2">BIOTECH</option>
-                                <option value="3">BUSINESS SERVICES</option>
-                                <option value="4">ENERGY</option>
-                                <option value="5">FINANCE</option>
-                                <option value="6">INFORMATION TECH</option>
-                                <option value="7">ENTERTAINMENT</option>
-                                <option value="8">HEALTH SERVICES</option>
-                                <option value="9">MANUFACTURING</option>
-                                <option value="10">NON-PROFIT</option>
-                                <option value="11">OTHER</option>
+                            <h4>Age Range</h4>
+                            <select class="chosen-select" id="age">
+                                <option value="" disabled="disabled" selected="selected">SELECT AGE...</option>
+                                <option>18 to 22</option>
+                                <option>22 to 25</option>
+                                <option>25 to 30</option>
+                                <option>30 to 40</option>
+                                <option>40 to 50</option>
+                                <option>50 to 70</option>
+                                <option>70+</option>
                             </select>
 
-                          <h4>Income Range</h4>
-                             <select id="income">
-                                <option value="" disabled="disabled" selected="selected">SELECT INCOME...</option>
-                                 <option value="1">1 to 30K</option>
-                                 <option value="2">30K to 50K</option>
-                                 <option value="3">50K to 70K</option>
-                                 <option value="5">100K to 250K</option>
-                                 <option value="6">250K to 500K</option>
-                                 <option value="7">500K+</option>
-                                 <option value="8">N/A</option>
+                            <h4>Hobbies</h4>
+                            <input type="text" id="hobbies" required>
+
+                            <h4>Career Industry</h4>
+                                <select  class="chosen-select"  id="career">
+                                    <option value="" disabled="disabled" selected="selected">SELECT INDUSTRY...</option>
+                                    <option>AUTO</option>
+                                    <option>BIOTECH</option>
+                                    <option>BUSINESS SERVICES</option>
+                                    <option>ENERGY</option>
+                                    <option>FINANCE</option>
+                                    <option>INFORMATION TECH</option>
+                                    <option>ENTERTAINMENT</option>
+                                    <option>HEALTH SERVICES</option>
+                                    <option>MANUFACTURING</option>
+                                    <option>NON-PROFIT</option>
+                                    <option>OTHER</option>
+                                </select>
+
+                            <h4>Income Range</h4>
+                                <select  class="chosen-select" id="income">
+                                    <option value="" disabled="disabled" selected="selected">SELECT INCOME...</option>
+                                    <option>1 to 30K</option>
+                                    <option>30K to 50K</option>
+                                    <option>50K to 70K</option>
+                                    <option>70K to 100K</option>
+                                    <option>100K to 250K</option>
+                                    <option>250K to 500K</option>
+                                    <option>500K+</option>
+                                    <option>N/A</option>
+                                </select>
+
+                            <h4>Education</h4>
+                                <select class="chosen-select" id="education">
+                                    <option value="" disabled="disabled" selected="selected">SELECT SCHOOLING...</option>
+                                    <option>HIGH SCHOOL OR GDE</option>
+                                    <option>ASSOCIATES DEGREE</option>
+                                    <option>BACHELOR'S DEGREE</option>
+                                    <option>MASTER'S DEGREE</option>
+                                    <option>PHD</option>
+                                    <option>N/A</option>
+                                </select>
+
+                            <h4>Kids</h4>
+                            <select class="chosen-select" id="kids">
+                                    <option >YES</option>
+                                    <option>NO</option>
+                                </select>
+
+                            <h4>Pets</h4>
+                            <select class="chosen-select" id="pets">
+                                    <option>YES</option>
+                                    <option>NO</option>
+                                </select>
+
+                            <h4>Marital Status</h4>
+                            <select class="chosen-select" id="married">
+                                    <option>MARRIED</option>
+                                    <option>SINGLE</option>
+                                </select>
+                                
+                            <h4>Car</h4>
+                            <select class="chosen-select" id="car">
+                                <option>YES</option>
+                                <option>NO</option>
                             </select>
+                                
+                            <h4>Social Life</h4>
+                            <input class="chosen-select" type="text" id="social" required>
 
-                          <h4>Education</h4>
-                            <select id="education">
-                                <option value="" disabled="disabled" selected="selected">SELECT SCHOOLING...</option>
-                                <option value="1">HIGH SCHOOL OR GDE</option>
-                                <option value="2">ASSOCIATES DEGREE</option>
-                                <option value="3">BACHELOR'S DEGREE</option>
-                                <option value="4">MASTER'S DEGREE</option>
-                                <option value="5">PHD</option>
-                                <option value="6">N/A</option>
-                            </select>
-
-                          <h4>Kids</h4>
-                          <select id="kids">
-                              <option value="1">YES</option>
-                              <option value="2">NO</option>
-                            </select>
-
-                          <h4>Pets</h4>
-                          <select id="pets">
-                              <option value="1">YES</option>
-                              <option value="2">NO</option>
-                            </select>
-
-                          <h4>Marital Status</h4>
-                          <select id="married">
-                              <option value="1">MARRIED</option>
-                              <option value="2">SINGLE</option>
-                            </select>
-
-                          <h4>Social Life</h4>
-                          <input type="text" id="social" required>
-
-                          <h4>Car</h4>
-                          <select id="car">
-                              <option value="1">YES</option>
-                              <option value="2">NO</option>
-                            </select>
-
-                          <h4>Lifestyle</h4>
-                          <input type="text" id="lifestyle" required>
+                            <h4>Lifestyle</h4>
+                            <input class="chosen-select" type="text" id="lifestyle" required>
 
                         </div>
                         <div class="modal-footer">
