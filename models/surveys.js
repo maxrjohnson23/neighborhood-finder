@@ -1,16 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
     var Surveys = sequelize.define("Surveys", {
-      Age: DataTypes.INTEGER,
+      Age: DataTypes.STRING,
       Hobbies: DataTypes.STRING,
-      Industry: DataTypes.INTEGER,
-      Income: DataTypes.INTEGER,
-      Education: DataTypes.INTEGER,
-      Children: DataTypes.INTEGER,
-      Pets: DataTypes.INTEGER,
-      Relationship_Status: DataTypes.INTEGER,
-      Car: DataTypes.INTEGER,
-      Social: DataTypes.INTEGER,
-      Lifestyle: DataTypes.INTEGER
+      Industry: DataTypes.STRING,
+      Income: DataTypes.STRING,
+      Education: DataTypes.STRING,
+      Children: DataTypes.STRING,
+      Pets: DataTypes.STRING,
+      Relationship_Status: DataTypes.STRING,
+      Car: DataTypes.STRING,
+      Social: DataTypes.STRING,
+      Lifestyle: DataTypes.STRING
     });
     return Surveys;
   };

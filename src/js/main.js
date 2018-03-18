@@ -1,25 +1,26 @@
-console.log('Custom code loaded');
+$(document).ready(function(){
 
-$("#submitSurvey").on("click", function(submit){
-    submit.preventDefault();
-    var newSurvey = {
-        age: $("#age").val().trim(),
-        hobbies: $("#hobbies").val(),
-        education: $("#education").val(),
-        income: $("#income").val(),
-        career: $("#career").val(),
-        social: $("#social").val(),
-        kids: $("#kids").val(),
-        pets: $("#pets").val(),
-        lifestyle: $("#lifestyle").val(),
-        car: $("#car").val(),
-        married: $("#married").val()
-      };
-
-      console.log("survey" + newSurvey);
-
-    $.post("/api/surveys", newSurvey, function(data) {
-        console.log(data);
+    console.log('Custom code loaded');
+    
+    $(".st-container").on("click","#submitSurvey", function(submit){
+        submit.preventDefault();
+        var newSurvey = {
+            age: $("#age").val(),
+            hobbies: $("#hobbies").val(),
+            education: $("#education").val(),
+            income: $("#income").val(),
+            career: $("#career").val(),
+            kids: $("#kids").val(),
+            pets: $("#pets").val(),
+            car: $("#car").val(),
+            married: $("#married").val(),
+            lifestyle: $("#lifestyle").val(),
+            social: $("#social").val()
+        };
+        
+        $.post("/api/surveys", newSurvey, function(data) {
+                console.log(data);
+            });
+            
     });
-
 });
