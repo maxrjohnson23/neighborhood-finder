@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Surveys = sequelize.define("Surveys", {
-      Address: DataTypes.STRING,
+      Street: DataTypes.STRING,
       City: DataTypes.STRING,
       State: DataTypes.STRING,
       Zip: DataTypes.INTEGER,
@@ -14,7 +14,10 @@ module.exports = function(sequelize, DataTypes) {
       Relationship_Status: DataTypes.STRING,
       Car: DataTypes.STRING,
       Social: DataTypes.STRING,
-      Lifestyle: DataTypes.STRING
+      Lifestyle: DataTypes.STRING,
+      Address: DataTypes.STRING,
+      geocodeLat: DataTypes.DECIMAL(9,6),
+      geocodeLng: DataTypes.DECIMAL(9,6)
     });
     return Surveys;
   };
