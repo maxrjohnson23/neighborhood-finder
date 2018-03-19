@@ -19,6 +19,10 @@ var db = require("../models");
 
 router.post("/api/surveys", function(req, res) {
   db.Surveys.create({
+    Street:req.body.address,
+    City: req.body.city,
+    State: req.body.state,
+    Zip: req.body.zip,
     Age: req.body.age,
     Hobbies: req.body.hobbies,
     Industry: req.body.career,
@@ -29,7 +33,10 @@ router.post("/api/surveys", function(req, res) {
     Relationship_Status: req.body.married,
     Car: req.body.car,
     Social: req.body.social,
-    Lifestyle: req.body.lifestyle
+    Lifestyle: req.body.lifestyle,
+    Address: req.body.address,
+    geocodeLat: req.body.geocodeLat,
+    geocodeLng: req.body.geocodeLng
   }).then(function(data) {
     res.json({ id: data.insertId });
     // res.redirect("/");

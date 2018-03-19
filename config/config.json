@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Skeleton24",
+    "password": "1111",
     "database": "neighborhoodFinder_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
