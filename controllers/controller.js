@@ -20,8 +20,6 @@ var db = require("../models");
 router.post("/api/surveys", function (req, res) {
 
     db.Surveys.create({
-        geocodeLat: req.body.geocodeLat,
-        geocodeLng: req.body.geocodeLng,
         Street: req.body.address,
         City: req.body.city,
         State: req.body.state,
@@ -34,7 +32,12 @@ router.post("/api/surveys", function (req, res) {
         Pets: req.body.pets,
         Relationship_Status: req.body.married,
         Car: req.body.car,
-        Social: req.body.social,
+        Address: req.body.address,
+        Neighborhood: req.body.neighborhood,
+        geocodeLat: req.body.geocodeLat,
+        geocodeLng: req.body.geocodeLng,
+        Hobbies: req.body.hobbies,
+        Social: req.body.social
     }).then(function (data) {
         res.json({id: data.insertId});
         // res.redirect("/");
@@ -42,14 +45,14 @@ router.post("/api/surveys", function (req, res) {
         res.json(err);
     });
 
-    db.Hobbies.create({
-        Hobbies: req.body.hobbies
-  }).then(function (data) {
-      res.json({id: data.insertId});
-      // res.redirect("/");
-  }).catch(function (err) {
-      res.json(err);
-  });
+//     db.Hobbies.create({
+//         Hobbies: req.body.hobbies
+//   }).then(function (data) {
+//       res.json({id: data.insertId});
+//       // res.redirect("/");
+//   }).catch(function (err) {
+//       res.json(err);
+//   });
 });
 
 router.get("/api/surveys", (req, res) => {
