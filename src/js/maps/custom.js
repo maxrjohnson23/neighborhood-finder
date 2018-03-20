@@ -1,4 +1,5 @@
 const mapOverlay = require("./mapOverlay");
+const mapMarkers = require("./mapMarkers");
 
 module.exports = function () {
 
@@ -8,14 +9,11 @@ module.exports = function () {
     });
     map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
+    // Set global reference
     window.map = map;
 
+    // Initialize overlay and markers
+    mapOverlay();
+    mapMarkers();
 
-    $("#neighborhood-overlay").on('click', function () {
-        mapOverlay.toggleNeighborhoodOverlay(window.map);
-    });
-
-    window.mapControls = {
-        neighborHoodLayer: null
-    };
-}
+};
