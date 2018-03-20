@@ -115,9 +115,30 @@
                                 <option>70+</option>
                             </select>
 
-                            <h4>Hobbies</h4>
-                            <input type="text" id="hobbies" required>
+                            <h4>Marital Status</h4>
+                            <select class="chosen-select" id="married">
+                                    <option>MARRIED</option>
+                                    <option>SINGLE</option>
+                            </select>
 
+                            <h4>Kids</h4>
+                            <select class="chosen-select" id="kids">
+                                <option >YES</option>
+                                <option>NO</option>
+                            </select>
+    
+                            <h4>Pets</h4>
+                            <select class="chosen-select" id="pets">
+                                <option>YES</option>
+                                <option>NO</option>
+                            </select>  
+                                    
+                            <h4>Car</h4>
+                            <select class="chosen-select" id="car">
+                                <option>YES</option>
+                                <option>NO</option>
+                            </select>
+                                
                             <h4>Career Industry</h4>
                                 <select  class="chosen-select"  id="career">
                                     <option value="" disabled="disabled" selected="selected">SELECT INDUSTRY...</option>
@@ -158,39 +179,34 @@
                                     <option>N/A</option>
                                 </select>
 
-                            <h4>Kids</h4>
-                            <select class="chosen-select" id="kids">
-                                    <option >YES</option>
-                                    <option>NO</option>
-                                </select>
-
-                            <h4>Pets</h4>
-                            <select class="chosen-select" id="pets">
-                                    <option>YES</option>
-                                    <option>NO</option>
-                                </select>
-
-                            <h4>Marital Status</h4>
-                            <select class="chosen-select" id="married">
-                                    <option>MARRIED</option>
-                                    <option>SINGLE</option>
-                                </select>
-                                
-                            <h4>Car</h4>
-                            <select class="chosen-select" id="car">
-                                <option>YES</option>
-                                <option>NO</option>
-                            </select>
+                            <h4>Hobbies</h4>
+                            <label class="radio-inline"><input type="radio" name="optradio">Sports</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Music</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Reading</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Fitness/Health</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Video Games</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Arts/Crafts</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Cooking</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Movies</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Traveling</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Card/Board Games</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Volunteer Work</label>
                                 
                             <h4>Social Life</h4>
-                            <input class="chosen-select" type="text" id="social" required>
-
-                            <h4>Lifestyle</h4>
-                            <input class="chosen-select" type="text" id="lifestyle" required>
+                            <label class="radio-inline"><input type="radio" name="optradio">Dating</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Late Night Bars</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Attending Sporting Events</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Theatre</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Live Music</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Stay at Home</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Fitness Events</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Volunteer Events</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Outdoor Activites</label>
+                            <label class="radio-inline"><input type="radio" name="optradio">Art Shows</label>
 
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" id="submitSurvey">SUBMIT</button>
+                          <button type="button" class="btn btn-default" id="submitSurvey" data-dismiss="modal">SUBMIT</button>
                         </div>
                       </div>
 
@@ -230,8 +246,10 @@
                     </form>
                     <ul class="nav navbar-nav navbar-right ">
                         <!-- Login -->
-                        <li data-toggle="modal" data-target="#myModal">
-                            Survey
+                        <li data-toggle="modal" data-target="#myModal" class="dropdown-toggle">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-fw fa-tasks"></i> Survey
+                            </a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
