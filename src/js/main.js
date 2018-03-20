@@ -36,7 +36,6 @@ $(document).ready(function () {
                     pets: $("#pets").val(),
                     car: $("#car").val(),
                     married: $("#married").val(),
-                    lifestyle: $("#lifestyle").val(),
                     social: $("#social").val(),
                     address: $("#street").val() + ', ' + $("#city").val() + ', ' + $("#state").val() + ' ' + $("#zip").val(),
                     geocodeLat: resultLat,
