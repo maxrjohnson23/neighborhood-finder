@@ -27,7 +27,6 @@ router.post("/api/surveys", function (req, res) {
         State: req.body.state,
         Zip: req.body.zip,
         Age: req.body.age,
-        Hobbies: req.body.hobbies,
         Industry: req.body.career,
         Income: req.body.income,
         Education: req.body.education,
@@ -36,13 +35,21 @@ router.post("/api/surveys", function (req, res) {
         Relationship_Status: req.body.married,
         Car: req.body.car,
         Social: req.body.social,
-        Lifestyle: req.body.lifestyle
     }).then(function (data) {
         res.json({id: data.insertId});
         // res.redirect("/");
     }).catch(function (err) {
         res.json(err);
     });
+
+    db.Hobbies.create({
+        Hobbies: req.body.hobbies
+  }).then(function (data) {
+      res.json({id: data.insertId});
+      // res.redirect("/");
+  }).catch(function (err) {
+      res.json(err);
+  });
 });
 
 router.get("/api/surveys", (req, res) => {
