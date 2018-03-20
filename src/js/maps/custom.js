@@ -16,4 +16,16 @@ module.exports = function () {
     mapOverlay();
     mapMarkers();
 
+    google.maps.event.addListener(map, "click", function (event) {
+        // get lat/lon of click
+        var clickLat = event.latLng.lat();
+        var clickLng = event.latLng.lng();
+
+        console.log(`${clickLat}, ${clickLng}`);
+        // var marker = new google.maps.Marker({
+        //     position: new google.maps.LatLng(clickLat,clickLng),
+        //     map: map
+        // });
+    });
+
 };

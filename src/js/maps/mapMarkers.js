@@ -1,7 +1,21 @@
+//var data = require("./data/data.json");
+
+
 module.exports = function () {
 
     // Fetch markers from DB
     console.log('Fetching markers');
+
+    // Generate seed data
+    // data.forEach((a) => {
+    //     let latLng = new google.maps.LatLng(a.lat, a.lng);
+    //     var marker = new google.maps.Marker({
+    //         map: map,
+    //         position: latLng,
+    //         icon: '/images/markers/user-01.png'
+    //     });
+    // });
+
     $.ajax({
         url: `/api/surveys/`,
         type: "GET",
