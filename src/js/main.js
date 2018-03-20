@@ -47,4 +47,21 @@ $(document).ready(function() {
       console.log(data);
     });
   });
+
+  //sign up
+  $('#SignUpSubmit').on('click', (e) => {
+    e.preventDefault();
+    let newUser = {
+      first_name: $('#InputFirstName').val(),
+      last_name: $('#InputFirstName').val(),
+      email: $('#InputFirstName').val(),
+      password: $('#InputFirstName').val()
+    }
+
+    $.post('api/users', newUser, (data) => {
+      console.log(data);
+    })
+  });
+
+
 });

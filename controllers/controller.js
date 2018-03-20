@@ -42,6 +42,17 @@ router.post("/api/surveys", function(req, res) {
     // res.redirect("/");
   });
 });
+
+router.post('api/users', (req, res) => {
+  db.Users.create({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    password: req.body.password
+  }).then(data => {
+    res.json({ id: data.insertId });
+  });
+});
 // router.put("/api/burgers/:id", function(req, res) {
 //   db.Burger.update({devoured:req.body.devoured},
 //   {
