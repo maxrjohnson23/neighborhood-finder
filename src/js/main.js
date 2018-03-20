@@ -63,5 +63,10 @@ $(document).ready(function() {
     })
   });
 
+  $('#LoginButton').on('click', (e) => {
+    e.preventDefault();
+    
+  })
+
 
 });

@@ -1,5 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var passport = require('passport');
+var session = require('express-session');
 // var exphbs = require("express-handlebars");
 
 var routes = require("./controllers/controller.js");
@@ -16,6 +18,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
+
+// For Passport
+ 
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
+ 
+app.use(passport.initialize());
+ 
+app.use(passport.session()); // persistent login sessions
 
 // app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 // app.set("view engine", "handlebars");
