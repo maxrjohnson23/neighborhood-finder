@@ -1,6 +1,6 @@
 const db = require("../models");
 // Get seed lat/lng data from JSON
-const data = require("../public/js/data/data.json");
+const data = require("../src/js/maps/data/data.json");
 
 // Add randomElement method to Array prototype
 Array.prototype.randomElement = function () {
