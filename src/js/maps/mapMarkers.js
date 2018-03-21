@@ -24,10 +24,12 @@ module.exports = function () {
 
             // Map each marker by lat/long
             data.forEach((a) => {
+                let hobbies = a.Hobbies.map(h => h.id);
                 let latLng = new google.maps.LatLng(a.geocodeLat, a.geocodeLng);
                 let marker = new google.maps.Marker({
                     map: map,
                     position: latLng,
+                    hobbies: hobbies,
                     icon: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png"
                 });
                 // Store data points in mapControls for access

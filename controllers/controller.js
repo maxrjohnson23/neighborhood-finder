@@ -46,21 +46,18 @@ router.post("/api/surveys", function (req, res) {
         res.json(err);
     });
 
-//     db.Hobbies.create({
-//         Hobbies: req.body.hobbies
-//   }).then(function (data) {
-//       res.json({id: data.insertId});
-//       // res.redirect("/");
-//   }).catch(function (err) {
-//       res.json(err);
-//   });
 });
 
 router.get("/api/surveys", (req, res) => {
     console.log('Returning surveys');
     db.Surveys.findAll({
-        attributes: ['Street', 'City', 'State', 'Zip', 'geocodeLat', 'geocodeLng'],
-        raw: true
+        attributes: ['Id', 'Street', 'City', 'State', 'Zip', 'geocodeLat', 'geocodeLng'],
+        raw: false,
+        include: [{
+            model: db.Hobbies,
+            attributes: ['id'],
+            through: { attributes: ['id'] }
+        }]
     }).then(result => {
         res.json(result);
     }).catch((err) => {
@@ -68,17 +65,7 @@ router.get("/api/surveys", (req, res) => {
         res.status(500).send({error: err});
     });
 });
-// router.put("/api/burgers/:id", function(req, res) {
-//   db.Burger.update({devoured:req.body.devoured},
-//   {
-//     where: {
-//       id: req.params.id
-//     }
-//   }).then(function(data) {
-//     console.log(data);
-//     res.json("/");
-//   });
-// });
+
 
 // Export routes for server.js to use.
 module.exports = router;

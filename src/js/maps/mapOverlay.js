@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function () {
     function toggleNeighborhoodOverlay(map) {
         if (window.mapControls.neighborHoodLayer === null || window.mapControls.neighborHoodLayer.getMap() === null) {
             let neighborhoodLayer = new google.maps.KmlLayer({
@@ -41,6 +41,29 @@ module.exports = function() {
         } else {
             mapControls.heatMap.setMap(mapControls.heatMap.getMap() ? null : map);
         }
+
+    });
+
+    // Register heatmap toggle button
+    $("#hobby-overlay").on('click', function () {
+
+        if ($(this).data("toggle") === "on") {
+            $(this).data("toggle", "off");
+            mapControls.mapMarkers.forEach(m => {
+
+                if (m.hobbies.includes(1)) {
+                    m.setMap(null);
+                }
+            });
+        } else {
+            $(this).data("toggle", "on");
+            mapControls.mapMarkers.forEach(m => {
+                if (m.hobbies.includes(1)) {
+                    m.setMap(map);
+                }
+            });
+        }
+
 
     });
 
