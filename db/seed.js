@@ -16,6 +16,24 @@ let education = ["HIGH SCHOOL OR GDE", "ASSOCIATES DEGREE", "BACHELOR'S DEGREE",
 
 db.sequelize.sync().then(function () {
 
+    // Populate hobby list
+    let hobbyList = ["Sports", "Music", "Reading", "Health", "Games", "Creative Expression/Arts", "Cooking", "Movies", "Traveling", "Card", "Volunteer"]
+    hobbyList.forEach(hobby => {
+        db.Hobbies.create({
+            name: hobby
+        });
+    });
+
+
+    // Populate social list
+    let socialList = ["Dating", "Late Night Bars", "Attending Sporting Events", "Theatre", "Live Music", "Stay at Home", "Fitness Events", "Volunteer Events", "Outdoor Activites", "Art Shows"];
+
+    socialList.forEach(social => {
+        db.Social.create({
+            name: social
+        });
+    });
+
     data.forEach(a => {
         // Generate semi-random values
         let address = (Math.floor(Math.random() * 10000) + 1) + " Main Street";
@@ -27,6 +45,22 @@ db.sequelize.sync().then(function () {
         let career = industry.randomElement();
         let income = incomeRange.randomElement();
         let edu = education.randomElement();
+
+        // Get random number of random hobbies
+        let numHobbies = Math.floor(Math.random() * hobbyList.length);
+        let hobbies = new Set();
+        for (let i = 0; i < numHobbies; i++) {
+            // Hobby ID starts at 1
+            hobbies.add(hobbyList.indexOf(hobbyList.randomElement()) + 1);
+        }
+
+        // Get random number of random social activities
+        let numSocial = Math.floor(Math.random() * socialList.length);
+        let social = new Set();
+        for (let i = 0; i < numSocial; i++) {
+            // Social ID starts at 1
+            social.add(socialList.indexOf(socialList.randomElement()) + 1);
+        }
 
         // Create DB entry for survey
         db.Surveys.create({
@@ -45,30 +79,13 @@ db.sequelize.sync().then(function () {
             Pets: pets,
             Relationship_Status: marital,
             Car: car,
-            Social: "test"
         }).then(function (data) {
+            data.setHobbies(Array.from(hobbies));
+            data.setSocials(Array.from(social));
         }).catch(function (err) {
             console.log(err);
         });
     });
 
 
-    // Populate hobby list
-    let hobbies = ["sports", "music", "reading", "fitness", "videogames", "arts", "cooking", "movies", "traveling", "card", "volunteer"];
-
-    hobbies.forEach(hobby => {
-        db.Hobbies.create({
-            name: hobby
-        });
-    });
-
-
-    // Populate social list
-    let social = ["Dating", "Late Night Bars", "Attending Sporting Events", "Theatre", "Live Music", "Stay at Home", "Fitness Events", "Volunteer Events", "Outdoor Activites", "Art Shows"];
-
-    social.forEach(social => {
-        db.Social.create({
-            name: social
-        });
-    });
 });
