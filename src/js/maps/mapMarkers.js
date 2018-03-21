@@ -25,12 +25,17 @@ module.exports = function () {
             // Map each marker by lat/long
             data.forEach((a) => {
                 let latLng = new google.maps.LatLng(a.geocodeLat, a.geocodeLng);
-                var marker = new google.maps.Marker({
+                let marker = new google.maps.Marker({
                     map: map,
                     position: latLng,
                     icon: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png"
                 });
+                // Store data points in mapControls for access
+                mapControls.mapMarkers.push(marker);
+                mapControls.mapLatLng.push(latLng);
+
             });
+
         }
     });
 };
