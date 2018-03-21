@@ -33,7 +33,7 @@ db.sequelize.sync().then(function () {
             geocodeLat: a.lat,
             geocodeLng: a.lng,
             Address: address,
-            Street: "Main Street",
+            Street: address + " Main Street",
             City: "Chicago",
             State: "IL",
             Zip: "60606",

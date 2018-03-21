@@ -17,7 +17,7 @@ module.exports = function() {
         mapControls.heatMap = new google.maps.visualization.HeatmapLayer({
             data: mapControls.mapLatLng,
             map: map,
-            radius: 50,
+            radius: 30,
         });
     }
 
