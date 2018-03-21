@@ -18,21 +18,14 @@ module.exports = function(sequelize, DataTypes) {
       geocodeLng: DataTypes.DECIMAL(9,6)
     });
 
-    // Surveys.associate = function(models) {
-    //   Surveys.belongsTo(models.Hobbies, {
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    //   });
-    // };
-
-    // Surveys.associate = function(models) {
-    //   Surveys.belongsTo(models.Socialites, {
-    //     foreignKey: {
-    //       allowNull: false
-    //     }
-    //   });
-    // };
+    Surveys.associate = (models) => {
+        Surveys.belongsToMany(models.Hobbies, {
+            through: "SurveyHobbies"
+        });
+        Surveys.belongsToMany(models.Social, {
+            through: "SurveySocial"
+        });
+    };
 
     return Surveys;
   };

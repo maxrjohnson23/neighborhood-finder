@@ -20,25 +20,26 @@ var db = require("../models");
 router.post("/api/surveys", function (req, res) {
 
     db.Surveys.create({
-        Street: req.body.address,
-        City: req.body.city,
-        State: req.body.state,
-        Zip: req.body.zip,
-        Age: req.body.age,
-        Industry: req.body.career,
-        Income: req.body.income,
-        Education: req.body.education,
-        Children: req.body.kids,
-        Pets: req.body.pets,
-        Relationship_Status: req.body.married,
-        Car: req.body.car,
-        Address: req.body.address,
-        Neighborhood: req.body.neighborhood,
-        geocodeLat: req.body.geocodeLat,
-        geocodeLng: req.body.geocodeLng,
-        Hobbies: req.body.hobbies,
-        Social: req.body.social
-    }).then(function (data) {
+            Street: req.body.address,
+            City: req.body.city,
+            State: req.body.state,
+            Zip: req.body.zip,
+            Age: req.body.age,
+            Industry: req.body.career,
+            Income: req.body.income,
+            Education: req.body.education,
+            Children: req.body.kids,
+            Pets: req.body.pets,
+            Relationship_Status: req.body.married,
+            Car: req.body.car,
+            Address: req.body.address,
+            Neighborhood: req.body.neighborhood,
+            geocodeLat: req.body.geocodeLat,
+            geocodeLng: req.body.geocodeLng,
+        }
+    ).then(function (data) {
+        data.setHobbies(req.body.hobbies);
+        data.setSocials(req.body.social);
         res.json({id: data.insertId});
         // res.redirect("/");
     }).catch(function (err) {

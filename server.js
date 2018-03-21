@@ -12,7 +12,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.static(__dirname + "/public"));
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: true}));
 
 // parse application/json
 app.use(bodyParser.json());
@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 
 app.use(routes);
 
-db.sequelize.sync({force: true, logging: console.log}).then(function() {
+db.sequelize.sync().then(function () {
   app.listen(PORT, function() {
     console.log("App now listening at localhost:" + PORT);
   });

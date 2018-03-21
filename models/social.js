@@ -1,13 +1,14 @@
-module.exports = function(sequelize, DataTypes) {
-    var Social = sequelize.define("Socialites", {
-      socials: DataTypes.STRING
+module.exports = function (sequelize, DataTypes) {
+    const Social = sequelize.define("Social", {
+        name: DataTypes.STRING
     });
 
-    Social.associate = function (models) {
-        Social.hasMany(models.Surveys, {
-            onDelete: "cascade"
+    Social.associate = (models) => {
+
+        Social.belongsToMany(models.Surveys, {
+            through: "SurveySocial"
         });
     };
 
     return Social;
-  };
+};

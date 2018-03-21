@@ -1,13 +1,14 @@
-module.exports = function(sequelize, DataTypes) {
-    var Hobbies = sequelize.define("Hobbies", {
-      hobbies: DataTypes.STRING
+module.exports = function (sequelize, DataTypes) {
+    const Hobbies = sequelize.define("Hobbies", {
+        name: DataTypes.STRING
     });
 
-    Hobbies.associate = function (models) {
-        Hobbies.hasMany(models.Surveys, {
-            onDelete: "cascade"
+    Hobbies.associate = (models) => {
+
+        Hobbies.belongsToMany(models.Surveys, {
+            through: "SurveyHobbies"
         });
     };
 
     return Hobbies;
-  };
+};
