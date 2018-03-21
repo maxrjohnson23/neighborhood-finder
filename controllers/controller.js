@@ -58,14 +58,12 @@ router.post("/api/surveys", function (req, res) {
 router.get("/api/surveys", (req, res) => {
     console.log('Returning surveys');
     db.Surveys.findAll({
-        attributes: ['Address', 'City', 'State', 'Zip', 'geocodeLat', 'geocodeLng'],
+        attributes: ['Street', 'City', 'State', 'Zip', 'geocodeLat', 'geocodeLng'],
         raw: true
     }).then(result => {
-
-        console.log('Address' + result[0].Address + result[0].City);
-
         res.json(result);
     }).catch((err) => {
+        console.log(err);
         res.status(500).send({error: err});
     });
 });
