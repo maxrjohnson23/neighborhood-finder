@@ -679,9 +679,6 @@
                                 class="fa fa-list"></i></a>
                         <div class="navbar-header">
                             <div class="container-fluid">
-                                <div class="navbar-text pull-left"><i class="fa fa-fw fa-info"></i>
-                                    Discover thousands of locations
-                                </div>
                                 <a class="toggle pull-right margin-none visible-xs"
                                    data-toggle="collapse" data-target="#map-nav"><i
                                         class="fa fa-sliders fa-rotate-90"></i></a>
@@ -691,14 +688,10 @@
                             <form class="navbar-form  navbar-left form-inline">
 
                                 <div class="input-group">
-                                    <input type="text"
-                                           class="form-control form-control-w-150"
-                                           placeholder="Search ..">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-inverse" type="button"><i
-                                                    class="fa fa-search"></i></button>
-                                        </span>
-                                    </div>
+                                    <button class="btn btn-success" id="heatmap-overlay"
+                                            type="button">Toggle Heatmap
+                                    </button>
+                                </div>
                                 <div class="input-group">
                                     <button class="btn btn-info" id="neighborhood-overlay"
                                             type="button">Toggle Neighborhoods
@@ -808,7 +801,7 @@
 
     <script src="js/vendor/all.js"></script>
     <script src="js/bundle.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyALJDYf2H96RBV3sMxU9TetIrNBSREnfMU&callback=googleMapsOnLoad"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=visualization&key=AIzaSyALJDYf2H96RBV3sMxU9TetIrNBSREnfMU&callback=googleMapsOnLoad"></script>
 
 </body>
 

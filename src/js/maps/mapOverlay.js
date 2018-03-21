@@ -12,13 +12,36 @@ module.exports = function() {
         }
     }
 
+    function createHeatMap() {
+        // Display heatmap
+        mapControls.heatMap = new google.maps.visualization.HeatmapLayer({
+            data: mapControls.mapLatLng,
+            map: map,
+            radius: 50,
+        });
+    }
+
     // Register global map controls
     window.mapControls = {
-        neighborHoodLayer: null
+        neighborHoodLayer: null,
+        heatMap: null,
+        mapLatLng: [],
+        mapMarkers: []
     };
 
     // Register overlay toggle button
     $("#neighborhood-overlay").on('click', function () {
         toggleNeighborhoodOverlay(window.map);
     });
+
+    // Register heatmap toggle button
+    $("#heatmap-overlay").on('click', function () {
+        if (!mapControls.heatMap) {
+            createHeatMap();
+        } else {
+            mapControls.heatMap.setMap(mapControls.heatMap.getMap() ? null : map);
+        }
+
+    });
+
 };
