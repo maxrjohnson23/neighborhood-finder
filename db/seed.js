@@ -51,4 +51,24 @@ db.sequelize.sync().then(function () {
             console.log(err);
         });
     });
+
+
+    // Populate hobby list
+    let hobbies = ["sports", "music", "reading", "fitness", "videogames", "arts", "cooking", "movies", "traveling", "card", "volunteer"];
+
+    hobbies.forEach(hobby => {
+        db.Hobbies.create({
+            name: hobby
+        });
+    });
+
+
+    // Populate social list
+    let social = ["Dating", "Late Night Bars", "Attending Sporting Events", "Theatre", "Live Music", "Stay at Home", "Fitness Events", "Volunteer Events", "Outdoor Activites", "Art Shows"];
+
+    social.forEach(social => {
+        db.Social.create({
+            name: social
+        });
+    });
 });

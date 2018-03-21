@@ -23,14 +23,21 @@ $(document).ready(function () {
 
             if (status == google.maps.GeocoderStatus.OK) {
 
-                console.log(results[0].address_components)
-
-                console.log(extractFromAddress(results[0].address_components,"neighborhood"));
-
                 resultLat = results[0].geometry.location.lat();
                 resultLng = results[0].geometry.location.lng();
 
                 console.log(`${resultLat},${resultLng}`);
+
+                // Get hobby ID from checkboxes
+                let hobbies = $.map($('input.hobby:checkbox:checked'), function (e) {
+                    return $(e).data("hob");
+                });
+
+                // Get social ID from checkboxes
+                let social = $.map($('input.social:checkbox:checked'), function (e) {
+                    return $(e).data("social");
+                });
+
 
                 var newSurvey = {
                     street: $("#street").val(),
@@ -40,6 +47,8 @@ $(document).ready(function () {
                     age: $("#age").val(),
                     industry: $("#industry").val(),
                     income: $("#income").val(),
+                    hobbies: hobbies,
+                    social: social,
                     education: $("#education").val(),
                     children: $("#children").val(),
                     pets: $("#pets").val(),
@@ -48,14 +57,13 @@ $(document).ready(function () {
                     address: $("#street").val() + ', ' + $("#city").val() + ', ' + $("#state").val() + ' ' + $("#zip").val(),
                     neighborhood: extractFromAddress(results[0].address_components,"neighborhood"),
                     geocodeLat: resultLat,
-                    geocodeLng: resultLng,
-                    hobbies: $("#hobbies").val(),
-                    social: $("#social").val()
+                    geocodeLng: resultLng
                 };
 
                 $.post("/api/surveys", newSurvey, function (data) {
                     console.log(data);
                 });
+
             }
         });
 
