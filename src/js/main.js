@@ -2,6 +2,12 @@ $(document).ready(function () {
     console.log("Custom code loaded");
     var resultLat;
     var resultLng;
+    function extractFromAddress(components, type){
+        for (var i=0; i<components.length; i++)
+            for (var j=0; j<components[i].types.length; j++)
+                if (components[i].types[j]==type) return components[i].long_name;
+        return "";
+    };
 
     $("#submitSurvey").on("click", function (submit) {
         submit.preventDefault();
@@ -17,6 +23,10 @@ $(document).ready(function () {
 
             if (status == google.maps.GeocoderStatus.OK) {
 
+                console.log(results[0].address_components)
+
+                console.log(extractFromAddress(results[0].address_components,"neighborhood"));
+
                 resultLat = results[0].geometry.location.lat();
                 resultLng = results[0].geometry.location.lng();
 
@@ -28,18 +38,19 @@ $(document).ready(function () {
                     state: $("#state").val(),
                     zip: $("#zip").val(),
                     age: $("#age").val(),
-                    hobbies: $("#hobbies").val(),
-                    education: $("#education").val(),
+                    industry: $("#industry").val(),
                     income: $("#income").val(),
-                    career: $("#career").val(),
-                    kids: $("#kids").val(),
+                    education: $("#education").val(),
+                    children: $("#children").val(),
                     pets: $("#pets").val(),
-                    car: $("#car").val(),
                     married: $("#married").val(),
-                    social: $("#social").val(),
+                    car: $("#car").val(),
                     address: $("#street").val() + ', ' + $("#city").val() + ', ' + $("#state").val() + ' ' + $("#zip").val(),
+                    neighborhood: extractFromAddress(results[0].address_components,"neighborhood"),
                     geocodeLat: resultLat,
-                    geocodeLng: resultLng
+                    geocodeLng: resultLng,
+                    hobbies: $("#hobbies").val(),
+                    social: $("#social").val()
                 };
 
                 $.post("/api/surveys", newSurvey, function (data) {

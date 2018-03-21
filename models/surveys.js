@@ -13,25 +13,26 @@ module.exports = function(sequelize, DataTypes) {
       Relationship_Status: DataTypes.STRING,
       Car: DataTypes.STRING,
       Address: DataTypes.STRING,
+      Neighborhood: DataTypes.STRING,
       geocodeLat: DataTypes.DECIMAL(9,6),
       geocodeLng: DataTypes.DECIMAL(9,6)
     });
 
-    Surveys.associate = function(models) {
-      Surveys.belongsTo(models.Hobbies, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
+    // Surveys.associate = function(models) {
+    //   Surveys.belongsTo(models.Hobbies, {
+    //     foreignKey: {
+    //       allowNull: false
+    //     }
+    //   });
+    // };
 
-    Surveys.associate = function(models) {
-      Surveys.belongsTo(models.Socialites, {
-        foreignKey: {
-          allowNull: false
-        }
-      });
-    };
+    // Surveys.associate = function(models) {
+    //   Surveys.belongsTo(models.Socialites, {
+    //     foreignKey: {
+    //       allowNull: false
+    //     }
+    //   });
+    // };
 
     return Surveys;
   };
