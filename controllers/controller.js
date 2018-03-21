@@ -1,7 +1,10 @@
 var express = require("express");
+// var passport = require('passport');
 
 var router = express.Router();
 var db = require("../models");
+
+const authController = require('./authController');
 
 // Create all our routes and set up logic within those routes where required.
 // router.get("/", function(req, res) {
@@ -43,7 +46,7 @@ router.post("/api/surveys", function(req, res) {
   });
 });
 
-router.post('api/users', (req, res) => {
+router.post('api/user', (req, res) => {
   db.Users.create({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
@@ -51,8 +54,35 @@ router.post('api/users', (req, res) => {
     password: req.body.password
   }).then(data => {
     res.json({ id: data.insertId });
+    res.redirect('')
   });
 });
+
+//signup
+
+
+
+
+ 
+// module.exports = function(router, passport) {
+ 
+//     router.get('/signup', authController.signup);
+//     router.get('/signin', authController.signin);
+
+ 
+//     router.post('/signup', passport.authenticate('local-signup', {
+//       successRedirect: '/',
+    
+//       failureRedirect: '/signup'
+//     }
+    
+//     ));
+// }
+
+
+// router.get('/signin', authController.signin);
+
+// router.post('/signup', passport)
 // router.put("/api/burgers/:id", function(req, res) {
 //   db.Burger.update({devoured:req.body.devoured},
 //   {

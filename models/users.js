@@ -1,15 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
-    var Users = sequelize.define("Users", {
+    var User = sequelize.define("User", {
       first_name: {
         type: DataTypes.STRING,
-        notEmpty: true
+        validate: {
+          notEmpty: true
+        }
       },
       last_name: {
         type: DataTypes.STRING,
-        notEmpty: true
+        validate: {
+          notEmpty: true
+        }
       },
       email: {
-        DataTypes.STRING,
+        type: DataTypes.STRING,
         validate: {
           isEmail: true
         }
@@ -19,13 +23,13 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       },
       last_login: {
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
       status: {
-        type: Sequelize.ENUM('active', 'inactive'),
+        type: DataTypes.ENUM('active', 'inactive'),
         defaultValue: 'active'
       }
     });
-    return Users;
+    return User;
   };
   

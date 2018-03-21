@@ -58,7 +58,7 @@ $(document).ready(function() {
       password: $('#InputFirstName').val()
     }
 
-    $.post('api/users', newUser, (data) => {
+    $.post('api/user', newUser, (data) => {
       console.log(data);
     })
   });

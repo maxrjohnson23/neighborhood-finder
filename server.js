@@ -3,11 +3,13 @@ var bodyParser = require("body-parser");
 var passport = require('passport');
 var session = require('express-session');
 // var exphbs = require("express-handlebars");
-
-var routes = require("./controllers/controller.js");
-var db = require("./models");
-
 var app = express();
+var db = require("./models");
+var routes = require("./controllers/controller.js");
+require('./config/passport/passport')(passport, db.User)
+var authRoute = require('./controllers/auth')(app, passport);
+
+
 var PORT = process.env.PORT || 3000;
 
 // Serve static content for the app from the "public" directory in the application directory.
