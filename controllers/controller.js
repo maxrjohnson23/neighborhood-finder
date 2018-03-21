@@ -34,6 +34,7 @@ router.post("/api/surveys", function (req, res) {
         Pets: req.body.pets,
         Relationship_Status: req.body.married,
         Car: req.body.car,
+        Hobbies: req.body.hobbies,
         Social: req.body.social,
     }).then(function (data) {
         res.json({id: data.insertId});
@@ -41,9 +42,11 @@ router.post("/api/surveys", function (req, res) {
     }).catch(function (err) {
         res.json(err);
     });
+});
 
+router.post("/api/hobbies", function (req, res) {
     db.Hobbies.create({
-        Hobbies: req.body.hobbies
+        hobbies: req.body.hobbies
   }).then(function (data) {
       res.json({id: data.insertId});
       // res.redirect("/");

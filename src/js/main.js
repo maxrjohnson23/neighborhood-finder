@@ -22,13 +22,22 @@ $(document).ready(function () {
 
                 console.log(`${resultLat},${resultLng}`);
 
+                let hobbies = $.map($('input:checkbox:checked'), function(e) {
+                    return $(e).data("hob");
+                });
+
+                console.log(hobbies);
+
                 var newSurvey = {
                     street: $("#street").val(),
                     city: $("#city").val(),
                     state: $("#state").val(),
                     zip: $("#zip").val(),
                     age: $("#age").val(),
-                    hobbies: $("#hobbies").val(),
+                    // hobbies: $.map($('input:checkbox:checked'), function(e) {
+                    //     return $("#hobbies").val()
+                    // }),
+                    hobbies: hobbies,
                     education: $("#education").val(),
                     income: $("#income").val(),
                     career: $("#career").val(),
@@ -41,8 +50,12 @@ $(document).ready(function () {
                     geocodeLat: resultLat,
                     geocodeLng: resultLng
                 };
+                
 
                 $.post("/api/surveys", newSurvey, function (data) {
+                    console.log(data);
+                });
+                $.post("/api/hobbies", newSurvey, function (data) {
                     console.log(data);
                 });
             }

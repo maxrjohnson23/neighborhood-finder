@@ -11,6 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       Children: DataTypes.STRING,
       Pets: DataTypes.STRING,
       Relationship_Status: DataTypes.STRING,
+      Hobbies: DataTypes.STRING,
       Car: DataTypes.STRING,
       Address: DataTypes.STRING,
       geocodeLat: DataTypes.DECIMAL(9,6),
