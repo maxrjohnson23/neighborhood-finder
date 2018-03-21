@@ -28,7 +28,7 @@ module.exports = function () {
                 var marker = new google.maps.Marker({
                     map: map,
                     position: latLng,
-                    icon: '/images/markers/user-01.png'
+                    icon: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png"
                 });
             });
         }
