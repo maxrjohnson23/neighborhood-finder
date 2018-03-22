@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = function () {
     function toggleNeighborhoodOverlay(map) {
         if (window.mapControls.neighborHoodLayer === null || window.mapControls.neighborHoodLayer.getMap() === null) {
             let neighborhoodLayer = new google.maps.KmlLayer({
@@ -29,19 +29,45 @@ module.exports = function() {
         mapMarkers: []
     };
 
-    // Register overlay toggle button
-    $("#neighborhood-overlay").on('click', function () {
+    // Register overlay toggle
+    $("#neighborhood-map").on('click', function () {
+        $(this).toggleClass("active");
         toggleNeighborhoodOverlay(window.map);
     });
 
-    // Register heatmap toggle button
-    $("#heatmap-overlay").on('click', function () {
+    // Register heatmap toggle
+    $("#heat-map").on('click', function () {
+        console.log('TEST');
+        $(this).toggleClass("active");
         if (!mapControls.heatMap) {
             createHeatMap();
         } else {
             mapControls.heatMap.setMap(mapControls.heatMap.getMap() ? null : map);
         }
 
+    });
+
+    // Register marker filters
+    $(".sidebar-toggle").on('click', function () {
+
+        let filterId = $(this).data("filter-id");
+        let category = $(this).data("category");
+
+        if ($(this).hasClass("active")) {
+            mapControls.mapMarkers.forEach(m => {
+
+                if (m[category].includes(filterId)) {
+                    m.setMap(null);
+                }
+            });
+        } else {
+            mapControls.mapMarkers.forEach(m => {
+                if (m[category].includes(filterId)) {
+                    m.setMap(map);
+                }
+            });
+        }
+        $(this).toggleClass("active");
     });
 
 };
