@@ -28,9 +28,15 @@
 <body>
         <!--CSS Spinner-->
         <!--CSS Spinner-->
-        <div class="drawing" id="loading">
+        <!-- <div class="drawing" id="loading">
                 <div class="loading-dot"></div>
-            </div>
+            </div> -->
+            <!-- <div id="loader-wrapper">
+                    <div id="loader"></div>
+
+                    <div class="loader-section section-left"></div>
+                    <div class="loader-section section-right"></div>
+                </div> -->
         <!-- <div id="loader">
                 <div id="top"></div>
                 <div id="bottom"></div>
@@ -57,7 +63,20 @@
         </div>
     </div>
 
-
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function() {
+ 
+        setTimeout(function(){
+            $('body').addClass('loaded');
+            $('h1').css('color','#222222');
+        }, 3000);
+     
+    });
+    </script>
     <script src="js/vendor/all.js"></script>
     <script src="js/bundle.js"></script>
 </body>

@@ -22,10 +22,18 @@
     <link href="css/app/maps.css" rel="stylesheet"/>
     <link href="css/app/colors-buttons.css" rel="stylesheet"/>
     <link href="css/app/colors-text.css" rel="stylesheet"/>
+    <link href="css/app/transition.css" rel="stylesheet">
+
 
 </head>
 
 <body>
+        <div id="loader-wrapper">
+                <div id="loader"></div>
+
+                <div class="loader-section section-left"></div>
+                <div class="loader-section section-right"></div>
+            </div>
 
     <!-- Wrapper required for sidebar transitions -->
     <div class="st-container">
@@ -848,7 +856,18 @@
     <script src="js/vendor/all.js"></script>
     <script src="js/bundle.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=visualization&key=AIzaSyALJDYf2H96RBV3sMxU9TetIrNBSREnfMU&callback=googleMapsOnLoad"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
 
+            setTimeout(function () {
+                $('body').addClass('loaded');
+                $('h1').css('color', '#222222');
+            }, 3000);
+
+        });
+    </script>
 </body>
 
 </html>
