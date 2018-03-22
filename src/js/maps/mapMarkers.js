@@ -1,6 +1,3 @@
-//var data = require("./data/data.json");
-
-
 module.exports = function () {
 
     // Fetch markers from DB
