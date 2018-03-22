@@ -25,7 +25,7 @@
   z-index: 1500;
   border: 3px solid transparent;
   border-top-color: #26a69a;
-  border-top-color: #5f26a6;
+  /* border-top-color: #5f26a6; */
   border-radius: 50%;
 
   -webkit-animation: spin 1.5s linear infinite;
@@ -99,8 +99,8 @@
     top: 0;
     width: 51%;
     height: 100%;
-    background: #26a69a;
-    /* background: #222222; */
+    /* background: #26a69a; */
+    background: #222222;
     z-index: 1000;
 }
  
