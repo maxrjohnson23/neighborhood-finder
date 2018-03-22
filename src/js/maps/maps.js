@@ -3,13 +3,14 @@ const mapMarkers = require("./mapMarkers");
 
 module.exports = function () {
 
-    // Create Google map with global reference
-    map = new google.maps.Map(document.getElementById('google-fs-map'), {
-        // Chicago coordinates
+    let map = new google.maps.Map(document.getElementById('google-fs-map'), {
         center: new google.maps.LatLng(41.88105093780886, -87.62773873898391),
         zoom: 11,
-        mapTypeId: "google.maps.MapTypeId.ROADMAP"
+        mapTypeId: google.maps.MapTypeId.ROADMAP
     });
+
+    // Set global reference
+    window.map = map;
 
     // Initialize overlay and markers
     mapOverlay();
