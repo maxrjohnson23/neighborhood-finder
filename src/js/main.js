@@ -1,13 +1,11 @@
 $(document).ready(function () {
-    console.log("Custom code loaded");
-    var resultLat;
-    var resultLng;
+
     function extractFromAddress(components, type){
         for (var i=0; i<components.length; i++)
             for (var j=0; j<components[i].types.length; j++)
                 if (components[i].types[j]==type) return components[i].long_name;
         return "";
-    };
+    }
 
     $("#submitSurvey").on("click", function (submit) {
         submit.preventDefault();

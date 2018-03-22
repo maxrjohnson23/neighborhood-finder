@@ -1,4 +1,12 @@
 module.exports = function () {
+    // Register global map controls
+    mapControls = {
+        neighborHoodLayer: null,
+        heatMap: null,
+        mapLatLng: [],
+        mapMarkers: []
+    };
+
     function toggleNeighborhoodOverlay(map) {
         if (window.mapControls.neighborHoodLayer === null || window.mapControls.neighborHoodLayer.getMap() === null) {
             let neighborhoodLayer = new google.maps.KmlLayer({
@@ -21,13 +29,15 @@ module.exports = function () {
         });
     }
 
-    // Register global map controls
-    window.mapControls = {
-        neighborHoodLayer: null,
-        heatMap: null,
-        mapLatLng: [],
-        mapMarkers: []
-    };
+    function updateHeatMap() {
+        mapControls.mapLatLng = mapControls.mapMarkers.filter(m => {
+            return m.getMap();
+        }).map(m => {
+            return m.position;
+        });
+        mapControls.heatMap.setData(mapControls.mapLatLng);
+    }
+
 
     // Register overlay toggle
     $("#neighborhood-map").on('click', function () {
@@ -37,25 +47,31 @@ module.exports = function () {
 
     // Register heatmap toggle
     $("#heat-map").on('click', function () {
-        console.log('TEST');
-        $(this).toggleClass("active");
-        if (!mapControls.heatMap) {
+        if(!mapControls.heatMap) {
             createHeatMap();
-        } else {
-            mapControls.heatMap.setMap(mapControls.heatMap.getMap() ? null : map);
         }
+        if($(this).hasClass("active")){
+            mapControls.heatMap.setMap(null);
+        } else {
+            mapControls.heatMap.setData(mapControls.mapLatLng);
+            mapControls.heatMap.setMap(map);
+        }
+        $(this).toggleClass("active");
+
 
     });
 
     // Register marker filters
     $(".sidebar-toggle").on('click', function () {
 
+        // Get category and id to filter the map markers
         let filterId = $(this).data("filter-id");
         let category = $(this).data("category");
 
         if ($(this).hasClass("active")) {
             mapControls.mapMarkers.forEach(m => {
 
+                // Remove markers from map
                 if (m[category].includes(filterId)) {
                     m.setMap(null);
                 }
@@ -67,6 +83,12 @@ module.exports = function () {
                 }
             });
         }
+
+        // If heatmap overlay is on
+        if(mapControls.heatMap && mapControls.heatMap.getMap()) {
+            updateHeatMap();
+        }
+
         $(this).toggleClass("active");
     });
 
