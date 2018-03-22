@@ -4,18 +4,6 @@
 module.exports = function () {
 
     // Fetch markers from DB
-    console.log('Fetching markers');
-
-    // Generate seed data
-    // data.forEach((a) => {
-    //     let latLng = new google.maps.LatLng(a.lat, a.lng);
-    //     var marker = new google.maps.Marker({
-    //         map: map,
-    //         position: latLng,
-    //         icon: '/images/markers/user-01.png'
-    //     });
-    // });
-
     $.ajax({
         url: `/api/surveys/`,
         type: "GET",
@@ -24,20 +12,22 @@ module.exports = function () {
 
             // Map each marker by lat/long
             data.forEach((a) => {
+                // Store hobby and social array on each marker
                 let hobbies = a.Hobbies.map(h => h.id);
+                let social = a.Socials.map(s => s.id);
                 let latLng = new google.maps.LatLng(a.geocodeLat, a.geocodeLng);
                 let marker = new google.maps.Marker({
                     map: map,
                     position: latLng,
                     hobbies: hobbies,
+                    social: social,
                     icon: "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png"
                 });
-                // Store data points in mapControls for access
+                // Store data points in mapControls for global access
                 mapControls.mapMarkers.push(marker);
                 mapControls.mapLatLng.push(latLng);
 
             });
-
         }
     });
 };

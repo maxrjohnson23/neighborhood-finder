@@ -29,13 +29,16 @@ module.exports = function () {
         mapMarkers: []
     };
 
-    // Register overlay toggle button
-    $("#neighborhood-overlay").on('click', function () {
+    // Register overlay toggle
+    $("#neighborhood-map").on('click', function () {
+        $(this).toggleClass("active");
         toggleNeighborhoodOverlay(window.map);
     });
 
-    // Register heatmap toggle button
-    $("#heatmap-overlay").on('click', function () {
+    // Register heatmap toggle
+    $("#heat-map").on('click', function () {
+        console.log('TEST');
+        $(this).toggleClass("active");
         if (!mapControls.heatMap) {
             createHeatMap();
         } else {
@@ -44,27 +47,27 @@ module.exports = function () {
 
     });
 
-    // Register heatmap toggle button
-    $("#hobby-overlay").on('click', function () {
+    // Register marker filters
+    $(".sidebar-toggle").on('click', function () {
 
-        if ($(this).data("toggle") === "on") {
-            $(this).data("toggle", "off");
+        let filterId = $(this).data("filter-id");
+        let category = $(this).data("category");
+
+        if ($(this).hasClass("active")) {
             mapControls.mapMarkers.forEach(m => {
 
-                if (m.hobbies.includes(1)) {
+                if (m[category].includes(filterId)) {
                     m.setMap(null);
                 }
             });
         } else {
-            $(this).data("toggle", "on");
             mapControls.mapMarkers.forEach(m => {
-                if (m.hobbies.includes(1)) {
+                if (m[category].includes(filterId)) {
                     m.setMap(map);
                 }
             });
         }
-
-
+        $(this).toggleClass("active");
     });
 
 };

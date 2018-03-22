@@ -57,6 +57,10 @@ router.get("/api/surveys", (req, res) => {
             model: db.Hobbies,
             attributes: ['id'],
             through: { attributes: ['id'] }
+        },{
+            model: db.Social,
+            attributes: ['id'],
+            through: { attributes: ['id'] }
         }]
     }).then(result => {
         res.json(result);
