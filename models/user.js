@@ -32,3 +32,11 @@ module.exports = function(sequelize, DataTypes) {
   });
   return User;
 };
+
+// var Sequelize = require("sequelize")
+// module.exports = function(db){
+//   return db.define("User",{
+//     username: Sequelize.STRING,
+//     password: Sequelize.STRING
+//   })
+// }

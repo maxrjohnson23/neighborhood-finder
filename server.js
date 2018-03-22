@@ -10,6 +10,7 @@ var routes = require("./controllers/controller.js");
 var authRoutes = require('./controllers/authController');
 var authRed = require('./authRoutes/auth')(app);
 var db = require("./models");
+// var pass = require('./config/passport/passport')(app);
 
 var PORT = process.env.PORT || 3000;
 
