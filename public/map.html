@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html class="st-layout ls-top-navbar ls-bottom-footer show-sidebar sidebar-l1 sidebar-r1-xs"
+      lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Neighborhood Finder</title>
+
+    <link href="css/vendor/all.css" rel="stylesheet">
+
+    <link href="css/app/main.css" rel="stylesheet">
+    <link href="css/app/essentials.css" rel="stylesheet"/>
+    <link href="css/app/layout.css" rel="stylesheet"/>
+    <link href="css/app/sidebar.css" rel="stylesheet"/>
+    <link href="css/app/sidebar-skins.css" rel="stylesheet"/>
+    <link href="css/app/navbar.css" rel="stylesheet"/>
+    <link href="css/app/media.css" rel="stylesheet"/>
+    <link href="css/app/maps.css" rel="stylesheet"/>
+    <link href="css/app/colors-buttons.css" rel="stylesheet"/>
+    <link href="css/app/colors-text.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+    <!-- Wrapper required for sidebar transitions -->
+    <div class="st-container">
+
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">About Me</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="modal-guts">
+                            <div class="row">
+                                <div class="form-group col-xs-1"></div>
+                                <div class="form-group col-xs-5">
+
+                                    <h4>Address</h4>
+                                    <input type="text" id="street" required>
+                                </div>
+                                <div class="form-group col-xs-5">
+                                    <h4>City</h4>
+                                    <input type="text" id="city" required>
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="form-group col-xs-1"></div>
+                            <div class="form-group col-xs-5">
+                                <h4>State</h4>
+                                <select class="chosen-select" id="state">
+                                <option value="" disabled="disabled" selected="selected">SELECT STATE
+                                </option>
+                                <option>AL</option>
+                                <option>AK</option>
+                                <option>AZ</option>
+                                <option>AR</option>
+                                <option>CA</option>
+                                <option>CO</option>
+                                <option>CT</option>
+                                <option>DE</option>
+                                <option>FL</option>
+                                <option>GA</option>
+                                <option>HI</option>
+                                <option>ID</option>
+                                <option>IL</option>
+                                <option>IN</option>
+                                <option>IA</option>
+                                <option>KS</option>
+                                <option>KY</option>
+                                <option>LA</option>
+                                <option>ME</option>
+                                <option>MD</option>
+                                <option>MA</option>
+                                <option>MI</option>
+                                <option>MN</option>
+                                <option>MO</option>
+                                <option>MT</option>
+                                <option>NE</option>
+                                <option>NV</option>
+                                <option>NH</option>
+                                <option>NJ</option>
+                                <option>NM</option>
+                                <option>NY</option>
+                                <option>NC</option>
+                                <option>ND</option>
+                                <option>OH</option>
+                                <option>OK</option>
+                                <option>OR</option>
+                                <option>PA</option>
+                                <option>RI</option>
+                                <option>SC</option>
+                                <option>SD</option>
+                                <option>TN</option>
+                                <option>TX</option>
+                                <option>UT</option>
+                                <option>VT</option>
+                                <option>VA</option>
+                                <option>WA</option>
+                                <option>WV</option>
+                                <option>WI</option>
+                                <option>WY</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-5">
+                                <h4>Zip Code</h4>
+                                <input type="text" id="zip" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-1"></div>
+                            <div class="form-group col-xs-5">
+                                <h4>Age Range</h4>
+                                <select class="chosen-select" id="age">
+                                <option value="" disabled="disabled" selected="selected">SELECT AGE...
+                                </option>
+                                <option>18 to 22</option>
+                                <option>22 to 25</option>
+                                <option>25 to 30</option>
+                                <option>30 to 40</option>
+                                <option>40 to 50</option>
+                                <option>50 to 70</option>
+                                <option>70+</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-5">
+                                <h4>Marital Status</h4>
+                                <select class="chosen-select" id="married">
+                                <option>MARRIED</option>
+                                <option>SINGLE</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-1"></div>
+                            <div class="form-group col-xs-5">
+                                <h4>Kids</h4>
+                                <select class="chosen-select" id="children">
+                                <option>YES</option>
+                                <option>NO</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-5">
+                                <h4>Pets</h4>
+                                <select class="chosen-select" id="pets">
+                                <option>YES</option>
+                                <option>NO</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-1"></div>
+                            <div class="form-group col-xs-5">
+                                <h4>Car</h4>
+                                <select class="chosen-select" id="car">
+                                <option>YES</option>
+                                <option>NO</option>
+                                </select>
+                            </div>    
+                            <div class="form-group col-xs-5">
+                                <h4>Career Industry</h4>
+                                <select class="chosen-select" id="industry">
+                                <option value="" disabled="disabled" selected="selected">SELECT
+                                INDUSTRY...
+                                </option>
+                                <option>AUTO</option>
+                                <option>BIOTECH</option>
+                                <option>BUSINESS SERVICES</option>
+                                <option>ENERGY</option>
+                                <option>FINANCE</option>
+                                <option>INFORMATION TECH</option>
+                                <option>ENTERTAINMENT</option>
+                                <option>HEALTH SERVICES</option>
+                                <option>MANUFACTURING</option>
+                                <option>NON-PROFIT</option>
+                                <option>OTHER</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-1"></div>
+                            <div class="form-group col-xs-5">
+                                <h4>Income Range</h4>
+                                <select class="chosen-select" id="income">
+                                <option value="" disabled="disabled" selected="selected">SELECT
+                                INCOME...
+                                </option>
+                                <option>1 to 30K</option>
+                                <option>30K to 50K</option>
+                                <option>50K to 70K</option>
+                                <option>70K to 100K</option>
+                                <option>100K to 250K</option>
+                                <option>250K to 500K</option>
+                                <option>500K+</option>
+                                <option>N/A</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-5">    
+                                <h4>Education</h4>
+                                <select class="chosen-select" id="education">
+                                <option value="" disabled="disabled" selected="selected">SELECT
+                                SCHOOLING...
+                                </option>
+                                <option>HIGH SCHOOL OR GDE</option>
+                                <option>ASSOCIATES DEGREE</option>
+                                <option>BACHELOR'S DEGREE</option>
+                                <option>MASTER'S DEGREE</option>
+                                <option>PHD</option>
+                                <option>N/A</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="form-group col-xs-1"></div>
+                            <div class="form-group col-xs-10">
+                            <h4>Hobbies</h4>
+                            <label for="sports"><input class="hobby" type=checkbox name="sports" data-hob="1">Sports</label>
+                            <label for="music"><input class="hobby" type=checkbox name="music" data-hob="2">Music</label>
+                            <label for="reading"><input class="hobby" type=checkbox name="reading" data-hob="3">Reading</label>
+                            <label for="fitness"><input class="hobby" type=checkbox name="fitness" data-hob="4">Fitness/Health</label>
+                            <label for="videogames"><input class="hobby" type=checkbox name="videogames" data-hob="5">Video Games</label>
+                            <label for="arts"><input class="hobby" type=checkbox name="arts" data-hob="6">Creative Expression/Arts</label>
+                            <label for="cooking"><input class="hobby" type=checkbox name="cooking" data-hob="7">Cooking</label>
+                            <label for="movies"><input class="hobby" type=checkbox name="movies" data-hob="8">Movies</label>
+                            <label for="traveling"><input class="hobby" type=checkbox name="traveling" data-hob="9">Traveling</label>
+                            <label for="card"><input class="hobby" type=checkbox name="card" data-hob="10">Card</label>
+                            <label for="volunteer"><input class="hobby" type=checkbox name="volunteer" data-hob="11">Volunteer</label>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class="form-group col-xs-1"></div>
+                            <div class="form-group col-xs-10">
+                                <h4>Social Life</h4>
+                            <label for="dating"><input class="social" type="checkbox" name="dating" data-social="1">Dating</label>
+                            <label for="bars"><input class="social" type="checkbox" name="bars" data-social="2">Late Night Bars</label>
+                            <label for="sports"><input class="social" type="checkbox" name="sports" data-social="3">Attending Sporting Events</label>
+                            <label for="theatre"><input class="social" type="checkbox" name="theatre" data-social="4">Theatre</label>
+                            <label for="music"><input class="social" type="checkbox" name="music" data-social="5">Live Music</label>
+                            <label for="home"><input class="social" type="checkbox" name="home" data-social="6">Stay at Home</label>
+                            <label for="fitness"><input class="social" type="checkbox" name="fitness" data-social="7">Fitness Events</label>
+                            <label for="volunteer"><input class="social" type="checkbox" name="volunteer" data-social="8">Volunteer Events</label>
+                            <label for="outdoors"><input class="social" type="checkbox" name="outdoors" data-social="9">Outdoor Activites</label>
+                            <label for="art"><input class="social" type="checkbox" name="art" data-social="10">Art Shows</label>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" id="submitSurvey"
+                                data-dismiss="modal">SUBMIT
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#sidebar-menu" data-toggle="sidebar-menu"
+                       class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#main-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <a href="#sidebar-map" data-toggle="sidebar-menu"
+                       class="toggle pull-right visible-xs"><i class="fa fa-map-marker"></i></a>
+
+                    <a class="navbar-brand" href="index.html">Neighborhood Finder</a>
+              </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="main-nav">
+                    <ul class="nav navbar-nav navbar-right ">
+                        <!-- Login -->
+                        <li data-toggle="modal" data-target="#myModal" class="dropdown-toggle">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-fw fa-tasks"></i> Survey
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-fw fa-lock"></i> Login
+                            </a>
+                            <div class="dropdown-menu dropdown-size-280">
+                                <form>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-user"></i></span>
+                                            <input type="text" class="form-control"
+                                                   placeholder="Username">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-shield"></i></span>
+                                            <input type="password" class="form-control"
+                                                   placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Login <i
+                                                class="fa fa-sign-in"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <!-- // END login -->
+                        <!-- Sign up -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-fw fa-plus"></i> Sign Up
+                            </a>
+                            <div class="dropdown-menu dropdown-size-280">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-control-default">
+                                                <label for="InputFirstName">First
+                                                    name</label>
+                                                <input type="text" class="form-control"
+                                                       id="InputFirstName"
+                                                       placeholder="Your first name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-control-default">
+                                                <label for="InputLastName">Last name</label>
+                                                <input type="text" class="form-control"
+                                                       id="InputLastName"
+                                                       placeholder="Your last name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-control-default required">
+                                        <label for="InputEmail">Email address</label>
+                                        <input type="email" class="form-control"
+                                               id="InputEmail" placeholder="Enter email">
+                                    </div>
+                                    <div class="form-group form-control-default required">
+                                        <label for="InputPassword">Password</label>
+                                        <input type="password" class="form-control"
+                                               id="InputPassword" placeholder="Password">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </li>
+                        <!-- // END sign up -->
+                        <!-- user -->
+                        <li class="dropdown user">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="images/people/110/guy-6.jpg" alt="" class="img-circle"/>
+                                Bill<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#"><i class="fa fa-user"></i>Profile</a></li>
+                                <li><a href="#"><i class="fa fa-wrench"></i>Settings</a></li>
+                                <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                            </ul>
+                        </li>
+                        <!-- // END user -->
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+
+            </div>
+        </nav>
+
+        <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
+        <aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop"
+               id=sidebar-menu data-type=collapse>
+            <div data-scrollable>
+                <h3 class="category">Map features</h3>
+                <ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
+                    <li id="heat-map"><a><i class="fa fa-fire"></i><span>Heat Map</span></a></li>
+                    <li id="neighborhood-map"><a><i class="fa fa-home"></i><span>Neighborhoods</span></a></li>
+
+                    <li class="hasSubmenu active">
+                        <a href="#hobbies"><i class="fa fa-bicycle"></i><span>Hobbies</span></a>
+                        <ul id="hobbies" class="collapse">
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="6"><a><i class="fa fa-map-marker"></i>Art</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="10"><a><i class="fa fa-map-marker"></i>Cards</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="7"><a><i class="fa fa-map-marker"></i>Cooking</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="5"><a><i class="fa fa-map-marker"></i>Games</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="4"><a><i class="fa fa-map-marker"></i>Health</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="8"><a><i class="fa fa-map-marker"></i>Movies</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="2"><a><i class="fa fa-map-marker"></i>Music</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="3"><a><i class="fa fa-map-marker"></i>Reading</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="1"><a><i class="fa fa-map-marker"></i>Sports</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="9"><a><i class="fa fa-map-marker"></i>Traveling</a></li>
+                            <li class="active sidebar-toggle" data-category="hobbies" data-filter-id="11"><a><i class="fa fa-map-marker"></i>Volunteering</a></li>
+                        </ul>
+                    </li>
+                    <li class="hasSubmenu active">
+                        <a href="#social"><i class="fa fa-users"></i><span>Social</span></a>
+                        <ul id="social" class="collapse">
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="10"><a><i class="fa fa-map-marker"></i>Art Shows</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="2"><a><i class="fa fa-map-marker"></i>Sporting Events</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="1"><a><i class="fa fa-map-marker"></i>Dating</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="7"><a><i class="fa fa-map-marker"></i>Fitness Events</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="3"><a><i class="fa fa-map-marker"></i>Late Night Bars</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="5"><a><i class="fa fa-map-marker"></i>Live Music</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="9"><a><i class="fa fa-map-marker"></i>Outdoor Activites</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="6"><a><i class="fa fa-map-marker"></i>Stay at Home</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="4"><a><i class="fa fa-map-marker"></i>Theatre</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="8"><a><i class="fa fa-map-marker"></i>Volunteer Events</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
+        <aside class="sidebar right sidebar-size-xs-1 sidebar-size-lg-48pc sidebar-size-40pc sidebar-offset-0 sidebar-skin-white"
+               id=sidebar-map data-toggle-layout=sidebar-r-48pc-lg,sidebar-r-40pc
+               data-toggle-bar=true data-overlay=false>
+            <div data-scrollable>
+
+                <div class="sidebar-block sidebar-block-full padding-none">
+                    <div class="cover overlay hover cover-image-full height-220">
+                        <img src="images/photodune-3979102-superb-backyard-xs.jpg" alt="people"/>
+                        <div class="overlay overlay-bg-black overlay-full">
+                            <div class="v-center">
+                                <h3 class="text-overlay text-headline">Featured Property</h3>
+                                <p class="text-overlay text-subhead">Lorem ipsum dolor sit amet,
+                                    consectetur adipisicing elit.</p>
+                                <p class="text-h5">
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-white"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="category">Properties</h4>
+                <div class="sidebar-block padding-none">
+                    <div data-toggle="gridalicious" data-width="200">
+                        <div class="panel panel-default relative">
+                            <div class="ribbon-heading ribbon-primary inline absolute left margin-none">
+                                Sale
+                            </div>
+                            <div class="cover hover overlay margin-none">
+                                <img src="images/photodune-378874-real-estate-xs.jpg" alt="location"
+                                     class="img-responsive"/>
+                                <a href="property.html"
+                                   class="overlay overlay-full overlay-bg-black overlay-hover">
+                  <span class="v-center">
+                <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                  </span>
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                <h4 class="margin-v-0-5">Property for sale</h4>
+                                <p class="small">
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                </p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <span class="label label-grey-100">&euro;277,028.00</span>&nbsp;
+
+                                <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip"
+                                   data-title="Agency"></i>
+
+                                <a href="property.html"
+                                   class="btn btn-primary btn-circle absolute bottom right"><i
+                                        class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default relative">
+                            <div class="ribbon-heading ribbon-default inline absolute left margin-none">
+                                Sale
+                            </div>
+                            <div class="cover hover overlay margin-none">
+                                <img src="images/photodune-195203-houses-xs.jpg" alt="location"
+                                     class="img-responsive"/>
+                                <a href="property.html"
+                                   class="overlay overlay-full overlay-bg-black overlay-hover">
+                  <span class="v-center">
+                <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                  </span>
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                <h4 class="margin-v-0-5">Property for sale</h4>
+                                <p class="small">
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                </p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <span class="label label-grey-100">&euro;82,331.00</span>&nbsp;
+
+                                <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip"
+                                   data-title="Agency"></i>
+
+                                <a href="property.html"
+                                   class="btn btn-primary btn-circle absolute bottom right"><i
+                                        class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default relative">
+                            <div class="ribbon-heading ribbon-default inline absolute left margin-none">
+                                Sale
+                            </div>
+                            <div class="cover hover overlay margin-none">
+                                <img src="images/photodune-196089-house-xs.jpg" alt="location"
+                                     class="img-responsive"/>
+                                <a href="property.html"
+                                   class="overlay overlay-full overlay-bg-black overlay-hover">
+                  <span class="v-center">
+                <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                  </span>
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                <h4 class="margin-v-0-5">Property for sale</h4>
+                                <p class="small">
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                </p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <span class="label label-grey-100">&euro;81,662.00</span>&nbsp;
+
+                                <i class="small fa fa-fw icon-user-1" data-toggle="tooltip"
+                                   data-title="Individual"></i>
+
+                                <a href="property.html"
+                                   class="btn btn-primary btn-circle absolute bottom right"><i
+                                        class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default relative">
+                            <div class="ribbon-heading ribbon-primary inline absolute left margin-none">
+                                Rent
+                            </div>
+                            <div class="cover hover overlay margin-none">
+                                <img src="images/photodune-197173-residential-home-xs.jpg"
+                                     alt="location" class="img-responsive"/>
+                                <a href="property.html"
+                                   class="overlay overlay-full overlay-bg-black overlay-hover">
+                  <span class="v-center">
+                <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                  </span>
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                <h4 class="margin-v-0-5">Residential Home</h4>
+                                <p class="small">
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                </p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <span class="label label-grey-100">&euro;132,021.00</span>&nbsp;
+
+                                <i class="small fa fa-fw icon-user-1" data-toggle="tooltip"
+                                   data-title="Individual"></i>
+
+                                <a href="property.html"
+                                   class="btn btn-primary btn-circle absolute bottom right"><i
+                                        class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default relative">
+                            <div class="ribbon-heading ribbon-primary inline absolute left margin-none">
+                                Rent
+                            </div>
+                            <div class="cover hover overlay margin-none">
+                                <img src="images/photodune-3979102-superb-backyard-xs.jpg"
+                                     alt="location" class="img-responsive"/>
+                                <a href="property.html"
+                                   class="overlay overlay-full overlay-bg-black overlay-hover">
+                  <span class="v-center">
+                <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                  </span>
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                <h4 class="margin-v-0-5">Superb Backyard</h4>
+                                <p class="small">
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                </p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <span class="label label-grey-100">&euro;175,654.00</span>&nbsp;
+
+                                <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip"
+                                   data-title="Agency"></i>
+
+                                <a href="property.html"
+                                   class="btn btn-primary btn-circle absolute bottom right"><i
+                                        class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default relative">
+                            <div class="ribbon-heading ribbon-default inline absolute left margin-none">
+                                Sale
+                            </div>
+                            <div class="cover hover overlay margin-none">
+                                <img src="images/photodune-2238345-apartments-xs.jpg" alt="location"
+                                     class="img-responsive"/>
+                                <a href="property.html"
+                                   class="overlay overlay-full overlay-bg-black overlay-hover">
+                  <span class="v-center">
+                <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                  </span>
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                <h4 class="margin-v-0-5">Apartment</h4>
+                                <p class="small">
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                </p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <span class="label label-grey-100">&euro;187,285.00</span>&nbsp;
+
+                                <i class="small fa fa-fw icon-user-1" data-toggle="tooltip"
+                                   data-title="Individual"></i>
+
+                                <a href="property.html"
+                                   class="btn btn-primary btn-circle absolute bottom right"><i
+                                        class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="panel panel-default relative">
+                            <div class="ribbon-heading ribbon-default inline absolute left margin-none">
+                                Sale
+                            </div>
+                            <div class="cover hover overlay margin-none">
+                                <img src="images/photodune-1112879-modern-kitchen-in-luxury-mansion-xs.jpg"
+                                     alt="location" class="img-responsive"/>
+                                <a href="property.html"
+                                   class="overlay overlay-full overlay-bg-black overlay-hover">
+                  <span class="v-center">
+                <span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>
+                  </span>
+                                </a>
+                            </div>
+                            <div class="panel-body">
+                                <h4 class="margin-v-0-5">Luxury Mansion</h4>
+                                <p class="small">
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                    <span class="fa fa-fw fa-star-o text-yellow-800"></span>
+                                </p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <span class="label label-grey-100">&euro;72,152.00</span>&nbsp;
+
+                                <i class="small fa fa-fw icon-home-fill-1" data-toggle="tooltip"
+                                   data-title="Agency"></i>
+
+                                <a href="property.html"
+                                   class="btn btn-primary btn-circle absolute bottom right"><i
+                                        class="fa fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-block equal-padding">
+                    <ul class="pagination margin-none">
+                        <li class="disabled"><a href="#">&laquo;</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- sidebar effects OUTSIDE of st-pusher: -->
+        <!-- st-effect-1, st-effect-2, st-effect-4, st-effect-5, st-effect-9, st-effect-10, st-effect-11, st-effect-12, st-effect-13 -->
+
+        <!-- content push wrapper -->
+        <div class="st-pusher">
+
+            <!-- sidebar effects INSIDE of st-pusher: -->
+            <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
+
+            <!-- this is the wrapper for the content -->
+            <div class="st-content">
+
+                <!-- extra div for emulating position:fixed of the menu -->
+                <div class="st-content-inner padding-top-none" id="content">
+
+                    <div id="google-fs-map" data-toggle="google-maps"
+                         data-file="js/data/google_maps/markers-listing.json"
+                         data-zoom-position="LEFT_BOTTOM" class="maps-google-fs"></div>
+
+                    <nav class="navbar navbar-default navbar-size-large navbar-static-top navbar-map-overlay">
+                        <a data-toggle="sidebar-menu" href="#sidebar-map"
+                           class="toggle pull-right hidden-xs margin-none"><i
+                                class="fa fa-list"></i></a>
+                        <div class="navbar-header">
+                            <div class="container-fluid">
+                                <a class="toggle pull-right margin-none visible-xs"
+                                   data-toggle="collapse" data-target="#map-nav"><i
+                                        class="fa fa-sliders fa-rotate-90"></i></a>
+                            </div>
+                        </div>
+                        <div class="collapse navbar-collapse" id="map-nav">
+
+                        </div>
+                    </nav>
+
+                    <!--<script id="real-estate-map-pop-1" type="text/x-handlebars-template">-->
+                        <!--<div class="padding-none full">-->
+                            <!--<div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute leftinline margin-none">-->
+                                <!--{{ ribbon_mark_text }}-->
+                            <!--</div>-->
+                            <!--<div class="cover overlay cover-image-full margin-none">-->
+                                <!--<a href="{{ details_url }}" class="thumb" data-height="150px">-->
+                                    <!--<img src="{{ image }}" alt="image" class="img-responsive">-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <!--<div class="list-group margin-none">-->
+                                <!--<div class="list-group-item">-->
+                                    <!--<a href="{{ details_url }}"-->
+                                       <!--class="btn btn-primary btn-circle pull-right">-->
+                                        <!--<i class="fa fa-shopping-cart"></i>-->
+                                    <!--</a>-->
+                                    <!--<h4 class="margin-v-0-5">{{ title }}</h4>-->
+                                    <!--<p class="small">-->
+                                        <!--<span class="fa fa-fw fa-star text-yellow-800"></span>-->
+                                        <!--<span class="fa fa-fw fa-star text-yellow-800"></span>-->
+                                        <!--<span class="fa fa-fw fa-star text-yellow-800"></span>-->
+                                        <!--<span class="fa fa-fw fa-star-o text-yellow-800"></span>-->
+                                        <!--<span class="fa fa-fw fa-star-o text-yellow-800"></span>-->
+                                    <!--</p>-->
+                                    <!--<p>{{ description }}</p>-->
+                                    <!--<label class="label label-grey-100">&euro;{{ price }}</label>&nbsp;-->
+                                    <!--<small>-->
+
+                                        <!--<i class="fa fa-fw icon-home-fill-1"></i> Agency-->
+
+                                    <!--</small>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</script>-->
+
+                    <!--<script id="real-estate-map-pop_home" type="text/x-handlebars-template">-->
+                        <!--<div class="padding-none">-->
+                            <!--<div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute left inline margin-none">-->
+                                <!--{{ ribbon_mark_text }}-->
+                            <!--</div>-->
+                            <!--<div class="cover cover-image-full margin-none">-->
+                                <!--<a href="{{ details_url }}" class="thumb" data-height="150px">-->
+                                    <!--<img src="{{ image }}" alt="image" class="img-responsive">-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <!--<div class="text-center">-->
+                                <!--<h4 class="text-primary margin-bottom-none">{{ title }}</h4>-->
+                                <!--<p class="h5 text-muted margin-v-5-15">{{ location }}</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</script>-->
+
+                    <!--<script id="real-estate-map-pop_profile" type="text/x-handlebars-template">-->
+                        <!--<div class="text-center">-->
+                            <!--<p>-->
+                                <!--<img src="{{ image }}" alt="" class="img-circle"/>-->
+                            <!--</p>-->
+                            <!--<h4><a href="{{ details_url }}" class="text-grey-700">{{ name }}</a>-->
+                            <!--</h4>-->
+                            <!--<a href="mailto:{{ email }}">{{ email }}</a>-->
+                            <!--<br/>-->
+                            <!--<p class="text-muted"><i class="fa fa-user fa-fw"></i>Agent <i-->
+                                    <!--class="fa fa-home fa-fw"></i>{{ no_properties }} Properties</p>-->
+                        <!--</div>-->
+                    <!--</script>-->
+
+                    <!--<script id="real-estate-map-pop_icon" type="text/x-handlebars-template">-->
+                        <!--<div>-->
+                            <!--<div class="text-center">-->
+                                <!--<div class="h1 text-grey-300">-->
+                                    <!--<i class="{{ inner_icon }}"></i>-->
+                                <!--</div>-->
+                                <!--<p><a href="{{ details_url }}" class="h4 text-primary">{{ name-->
+                                    <!--}}</a></p>-->
+                                <!--<p>{{ location }}</p>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</script>-->
+
+                </div>
+                <!-- /st-content-inner -->
+
+            </div>
+            <!-- /st-content -->
+
+        </div>
+        <!-- /st-pusher -->
+
+        <!-- Footer -->
+        <footer class="footer">
+            <strong>Neighborhood</strong> &copy; Copyright 2018
+        </footer>
+        <!-- // Footer -->
+
+    </div>
+
+    <script src="js/vendor/all.js"></script>
+    <script src="js/bundle.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=visualization&key=AIzaSyALJDYf2H96RBV3sMxU9TetIrNBSREnfMU&callback=googleMapsOnLoad"></script>
+
+</body>
+
+</html>
