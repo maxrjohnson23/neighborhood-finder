@@ -1,4 +1,12 @@
 $(document).ready(function () {
+    $(window).on("load", function() {
+        preloaderFadeOutTime = 300;
+        function hidePreloader() {
+        var preloader = $('.spinner-wrapper');
+        preloader.fadeOut(preloaderFadeOutTime);
+        }
+        hidePreloader();
+        });
  console.log('loaded')
     function extractFromAddress(components, type){
         for (var i=0; i<components.length; i++)
