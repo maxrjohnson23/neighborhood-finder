@@ -29,24 +29,23 @@ router.post("/api/surveys", function (req, res) {
         data.setHobbies(req.body.hobbies).then(() => {
 
             data.setSocials(req.body.social).then(() => {
-                db.Surveys.findOne({where :{id: data.id}, raw: false, include: [{
+                db.Surveys.findOne({
+                    where: {id: data.id}, raw: false, include: [{
                         model: db.Hobbies,
                         attributes: ['id'],
-                        through: { attributes: ['id'] }
-                    },{
+                        through: {attributes: ['id']}
+                    }, {
                         model: db.Social,
                         attributes: ['id'],
-                        through: { attributes: ['id'] }
-                    }]}).then((data) => {
+                        through: {attributes: ['id']}
+                    }]
+                }).then((data) => {
                     console.log(data);
                     res.json(data);
 
                 })
             })
         });
-        res.json(data);
-
-        // res.redirect("/");
     }).catch(function (err) {
         res.json(err);
     });
@@ -61,11 +60,11 @@ router.get("/api/surveys", (req, res) => {
         include: [{
             model: db.Hobbies,
             attributes: ['id'],
-            through: { attributes: ['id'] }
-        },{
+            through: {attributes: ['id']}
+        }, {
             model: db.Social,
             attributes: ['id'],
-            through: { attributes: ['id'] }
+            through: {attributes: ['id']}
         }]
     }).then(result => {
         res.json(result);
@@ -81,7 +80,7 @@ router.get("/api/surveys", (req, res) => {
 router.get("/api/neighborhoods", (req, res) => {
     console.log('Returning neighborhoods');
     db.Surveys.sequelize.query(
-                `Select neighborhood,"education" as question,education as answer,Count(Education) as Count
+        `Select neighborhood,"education" as question,education as answer,Count(Education) as Count
                 from
                 (
                 select neighborhood, education
@@ -166,18 +165,17 @@ router.get("/api/neighborhoods", (req, res) => {
                 )
                 as d
                 group by neighborhood,question, criteria;`
-                ,
-                { type: db.Surveys.sequelize.QueryTypes.SELECT }
+        ,
+        {type: db.Surveys.sequelize.QueryTypes.SELECT}
     ).then(result => {
-    // Note the use of npm group-array package (required at top)
-    res.json(groupArray(result, 'neighborhood', 'question'));
-    console.log(groupArray(result, 'neighborhood', 'question'));
-    var neighborhoodArray = groupArray(result, 'neighborhood', 'question');
+        // Note the use of npm group-array package (required at top)
+        res.json(groupArray(result, 'neighborhood', 'question'));
+        console.log(groupArray(result, 'neighborhood', 'question'));
+        var neighborhoodArray = groupArray(result, 'neighborhood', 'question');
     }).catch((err) => {
         res.status(500).send({error: err});
     });
 });
-
 
 
 // Export routes for server.js to use.
