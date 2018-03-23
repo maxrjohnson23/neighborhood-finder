@@ -89,5 +89,32 @@ $(document).ready(function () {
       console.log(data);
     })
   });
+
+  // Load aggregated neighborhood information when right side bar button
+  // (aka 'hamburger' looking button) is clicked
+  $("#hamburger_button").on("click", function(){
+    $.ajax({
+        url: `/api/neighborhoods/`,
+        type: "GET",
+        success: function (data) {
+            for (item in data) {
+                // Returning neighborhood name and storing it in variable 'neighborhood_name'
+                var neighborhood_name = item;
+                console.log(`Neighborhood: ${neighborhood_name}`)
+                for (subItem in data[item]) {
+                    data[item][subItem].forEach((a) => {
+                        // Storing each question, answer, and count of those answers (per neighborhood)
+                        // to variables 'question', 'answer', and  'count'. 
+                        // Note that a.Count has a capital 'C' while the variable name has a lower case 'c'
+                        var question = a.question;
+                        var answer = a.answer;
+                        var count = a.Count;
+                        console.log(`${question} : ${answer} [${count}]`)
+                    });
+                }
+            };
+        }
+    });
+});
   console.log('main.js loaded')
 });
