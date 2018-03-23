@@ -1,5 +1,3 @@
-# [neighborhood-finder](https://powerful-eyrie-93940.herokuapp.com/)
-
 # Seventy7 - A Chicago Neighborhood Finder
 Find your perfect Chicago neighborhood match based on demographics, interests, and social activies.
 
@@ -21,7 +19,7 @@ Find your perfect Chicago neighborhood match based on demographics, interests, a
 * Heroku Deployments
 * MySQL / JawsDB
 
-## [View Site](https://seventy7.herokuapp.com/ "Seventy7")
+# [View Site](https://seventy7.herokuapp.com/ "Seventy7")
 
 
 ![Seventy7 Heatmap](samples/screenshot.png?raw=true "Seventy7 Heatmap")
