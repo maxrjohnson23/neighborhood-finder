@@ -202,8 +202,12 @@ function renderData(surveys) {
             let td = $('<td>');
             td.text(`${answerValues}: ${countValues}`);
             let targetID = x.replace(/\s+/g, '');
-            $(`#${targetID}HeadRow`).append(header);
-            $(`#${targetID}Row`).append(td);
+            if($(`#${targetID}HeadRow`).children().length < 8){
+                $(`#${targetID}HeadRow`).append(header);
+            }
+            if($(`#${targetID}HeadRow`).children().length < 8){
+                $(`#${targetID}Row`).append(td);
+            }
         })
     })
 }
