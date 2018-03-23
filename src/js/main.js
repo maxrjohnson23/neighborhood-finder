@@ -1,7 +1,7 @@
 $(document).ready(function () {
     setTimeout(function () {
         $('body').addClass('loaded');
-    },2200);
+    },3000);
 
     $(window).on("load", function () {
         preloaderFadeOutTime = 300;
