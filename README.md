@@ -1,5 +1,5 @@
 # Seventy7 - A Chicago Neighborhood Finder
-Find your perfect Chicago neighborhood match based on demographics, interests, and social activies.
+### Find your perfect Chicago neighborhood match based on demographics, interests, and social activies.
 
 ### Topics Covered
 * Model-View-Controller (MVC)
@@ -23,7 +23,7 @@ Find your perfect Chicago neighborhood match based on demographics, interests, a
 
 
 ![Seventy7 Heatmap](samples/screenshot.png?raw=true "Seventy7 Heatmap")
-![Seventy7 Markers](samples/screenshot.png?raw=true "Seventy7 Markers")
+![Seventy7 Markers](samples/screenshot2.png?raw=true "Seventy7 Markers")
 
 
 ### Using the Application
