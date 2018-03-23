@@ -17,11 +17,8 @@
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.6",
     "group-array": "^0.3.3",
-    "handlebars": "^4.0.11",
     "mysql2": "^1.5.2",
     "node-geocoder": "^3.22.0",
-    "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
     "sequelize": "^4.37.1",
     "serve-favicon": "~2.4.5"
   },
