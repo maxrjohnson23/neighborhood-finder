@@ -1,11 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-var exphbs = require("express-handlebars");
 var app = express();
 
-var passport = require('passport');
-var session = require('express-session');
 var routes = require("./controllers/controller.js");
 var db = require("./models");
 
