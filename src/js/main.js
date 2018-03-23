@@ -1,5 +1,13 @@
 $(document).ready(function () {
-
+    $(window).on("load", function() {
+        preloaderFadeOutTime = 300;
+        function hidePreloader() {
+        var preloader = $('.spinner-wrapper');
+        preloader.fadeOut(preloaderFadeOutTime);
+        }
+        hidePreloader();
+        });
+ console.log('loaded')
     function extractFromAddress(components, type){
         for (var i=0; i<components.length; i++)
             for (var j=0; j<components[i].types.length; j++)
@@ -66,4 +74,20 @@ $(document).ready(function () {
         });
 
     });
+
+     //sign up
+  $("#SubmitSignUp").on("click", function(submit){
+    submit.preventDefault();
+    let newUser = {
+      first_name: $('#InputFirstName').val(),
+      last_name: $('#InputLastName').val(),
+      email: $('#InputEmail').val(),
+      password: $('#InputPassword').val()
+    }
+
+    $.post('/signup', newUser, (data) => {
+      console.log(data);
+    })
+  });
+  console.log('main.js loaded')
 });
