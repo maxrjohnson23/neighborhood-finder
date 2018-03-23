@@ -5,7 +5,6 @@ module.exports = function () {
         url: `/api/surveys/`,
         type: "GET",
         success: function (data) {
-            console.log(data);
             mapControls.activeHobbies = new Set();
             mapControls.activeSocial = new Set();
 
@@ -33,7 +32,7 @@ module.exports = function () {
 
                 // Store data points in mapControls for map filtering
                 mapControls.mapMarkers.push(marker);
-                mapControls.mapLatLng.push(latLng);
+                mapControls.updateMapMarkers();
 
             });
         }

@@ -1,4 +1,8 @@
+
 $(document).ready(function () {
+    setTimeout(function () {
+        $('body').addClass('loaded');
+    }, 2500);
     $(window).on("load", function() {
         preloaderFadeOutTime = 300;
         function hidePreloader() {
@@ -7,7 +11,7 @@ $(document).ready(function () {
         }
         hidePreloader();
         });
- console.log('loaded')
+
     function extractFromAddress(components, type){
         for (var i=0; i<components.length; i++)
             for (var j=0; j<components[i].types.length; j++)
@@ -67,7 +71,47 @@ $(document).ready(function () {
                 };
 
                 $.post("/api/surveys", newSurvey, function (data) {
-                    console.log(data);
+
+                    // Clear current map filters
+                    mapControls.activeHobbies.clear();
+                    mapControls.activeSocial.clear();
+
+                    // Set hobby filters from survey
+                    let hobbies = data.Hobbies.map(h => {
+                        return h.id
+                    });
+                    for(let hobby of hobbies) {
+                        mapControls.activeHobbies.add(hobby);
+                        const $allHobbies = $(".sidebar-toggle[data-category='hobbies']");
+                        $allHobbies.each(function() {
+                            if(!mapControls.activeHobbies.has($(this).data("filter-id"))) {
+                                $(this).removeClass("active");
+                            } else {
+                                $(this).addClass("active");
+                            }
+                        });
+                    }
+
+                    // Set social filters from survey
+                    let socials = data.Socials.map(s => {
+                        return s.id
+                    });
+                    for(let social of socials) {
+                        mapControls.activeSocial.add(social);
+                        const $allSocials = $(".sidebar-toggle[data-category='social']");
+                        $allSocials.each(function() {
+                            if(!mapControls.activeSocial.has($(this).data("filter-id"))) {
+                                $(this).removeClass("active");
+                            } else {
+                                $(this).addClass("active");
+                            }
+                        });
+
+                    }
+                    mapControls.updateMapMarkers();
+                    mapControls.updateHeatMap();
+
+
                 });
 
             }
@@ -89,5 +133,4 @@ $(document).ready(function () {
       console.log(data);
     })
   });
-  console.log('main.js loaded')
 });

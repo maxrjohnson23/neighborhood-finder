@@ -397,8 +397,9 @@
         <aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop"
                id=sidebar-menu data-type=collapse>
             <div data-scrollable>
-                <h3 class="category">Map features</h3>
+                <h4 class="category">Map features</h4>
                 <ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
+                    <li id="your-matches"><a><i class="fa fa-search"></i><span>Your Matches</span></a></li>
                     <li id="heat-map"><a><i class="fa fa-fire"></i><span>Heat Map</span></a></li>
                     <li id="neighborhood-map"><a><i class="fa fa-home"></i><span>Neighborhoods</span></a></li>
 
@@ -424,17 +425,19 @@
                         <ul id="social" class="collapse">
                             <li class="active" id="social-all-toggle"><a><i class="fa fa-map-marker"></i>Toggle All</a></li>
                             <li class="active sidebar-toggle" data-category="social" data-filter-id="10"><a><i class="fa fa-map-marker"></i>Art Shows</a></li>
-                            <li class="active sidebar-toggle" data-category="social" data-filter-id="2"><a><i class="fa fa-map-marker"></i>Sporting Events</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="5"><a><i class="fa fa-map-marker"></i>Sporting Events</a></li>
                             <li class="active sidebar-toggle" data-category="social" data-filter-id="1"><a><i class="fa fa-map-marker"></i>Dating</a></li>
-                            <li class="active sidebar-toggle" data-category="social" data-filter-id="7"><a><i class="fa fa-map-marker"></i>Fitness Events</a></li>
-                            <li class="active sidebar-toggle" data-category="social" data-filter-id="3"><a><i class="fa fa-map-marker"></i>Late Night Bars</a></li>
-                            <li class="active sidebar-toggle" data-category="social" data-filter-id="5"><a><i class="fa fa-map-marker"></i>Live Music</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="6"><a><i class="fa fa-map-marker"></i>Fitness Events</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="2"><a><i class="fa fa-map-marker"></i>Late Night Bars</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="7"><a><i class="fa fa-map-marker"></i>Live Music</a></li>
                             <li class="active sidebar-toggle" data-category="social" data-filter-id="9"><a><i class="fa fa-map-marker"></i>Outdoor Activites</a></li>
-                            <li class="active sidebar-toggle" data-category="social" data-filter-id="6"><a><i class="fa fa-map-marker"></i>Stay at Home</a></li>
-                            <li class="active sidebar-toggle" data-category="social" data-filter-id="4"><a><i class="fa fa-map-marker"></i>Theatre</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="4"><a><i class="fa fa-map-marker"></i>Stay at Home</a></li>
+                            <li class="active sidebar-toggle" data-category="social" data-filter-id="3"><a><i class="fa fa-map-marker"></i>Theatre</a></li>
                             <li class="active sidebar-toggle" data-category="social" data-filter-id="8"><a><i class="fa fa-map-marker"></i>Volunteer Events</a></li>
                         </ul>
                     </li>
+                    <li id="clear-map"><a><i class="fa fa-home"></i><span>Clear</span></a></li>
+
 
                 </ul>
             </div>
@@ -723,19 +726,11 @@
             </div>
         </aside>
 
-        <!-- sidebar effects OUTSIDE of st-pusher: -->
-        <!-- st-effect-1, st-effect-2, st-effect-4, st-effect-5, st-effect-9, st-effect-10, st-effect-11, st-effect-12, st-effect-13 -->
-
         <!-- content push wrapper -->
         <div class="st-pusher">
 
-            <!-- sidebar effects INSIDE of st-pusher: -->
-            <!-- st-effect-3, st-effect-6, st-effect-7, st-effect-8, st-effect-14 -->
-
-            <!-- this is the wrapper for the content -->
             <div class="st-content">
 
-                <!-- extra div for emulating position:fixed of the menu -->
                 <div class="st-content-inner padding-top-none" id="content">
 
                     <div id="google-fs-map" data-toggle="google-maps"
@@ -758,86 +753,6 @@
                         </div>
                     </nav>
 
-                    <!--<script id="real-estate-map-pop-1" type="text/x-handlebars-template">-->
-                        <!--<div class="padding-none full">-->
-                            <!--<div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute leftinline margin-none">-->
-                                <!--{{ ribbon_mark_text }}-->
-                            <!--</div>-->
-                            <!--<div class="cover overlay cover-image-full margin-none">-->
-                                <!--<a href="{{ details_url }}" class="thumb" data-height="150px">-->
-                                    <!--<img src="{{ image }}" alt="image" class="img-responsive">-->
-                                <!--</a>-->
-                            <!--</div>-->
-                            <!--<div class="list-group margin-none">-->
-                                <!--<div class="list-group-item">-->
-                                    <!--<a href="{{ details_url }}"-->
-                                       <!--class="btn btn-primary btn-circle pull-right">-->
-                                        <!--<i class="fa fa-shopping-cart"></i>-->
-                                    <!--</a>-->
-                                    <!--<h4 class="margin-v-0-5">{{ title }}</h4>-->
-                                    <!--<p class="small">-->
-                                        <!--<span class="fa fa-fw fa-star text-yellow-800"></span>-->
-                                        <!--<span class="fa fa-fw fa-star text-yellow-800"></span>-->
-                                        <!--<span class="fa fa-fw fa-star text-yellow-800"></span>-->
-                                        <!--<span class="fa fa-fw fa-star-o text-yellow-800"></span>-->
-                                        <!--<span class="fa fa-fw fa-star-o text-yellow-800"></span>-->
-                                    <!--</p>-->
-                                    <!--<p>{{ description }}</p>-->
-                                    <!--<label class="label label-grey-100">&euro;{{ price }}</label>&nbsp;-->
-                                    <!--<small>-->
-
-                                        <!--<i class="fa fa-fw icon-home-fill-1"></i> Agency-->
-
-                                    <!--</small>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</script>-->
-
-                    <!--<script id="real-estate-map-pop_home" type="text/x-handlebars-template">-->
-                        <!--<div class="padding-none">-->
-                            <!--<div class="ribbon-heading text-h5 {{ ribbon_mark_class }} absolute left inline margin-none">-->
-                                <!--{{ ribbon_mark_text }}-->
-                            <!--</div>-->
-                            <!--<div class="cover cover-image-full margin-none">-->
-                                <!--<a href="{{ details_url }}" class="thumb" data-height="150px">-->
-                                    <!--<img src="{{ image }}" alt="image" class="img-responsive">-->
-                                <!--</a>-->
-                            <!--</div>-->
-                            <!--<div class="text-center">-->
-                                <!--<h4 class="text-primary margin-bottom-none">{{ title }}</h4>-->
-                                <!--<p class="h5 text-muted margin-v-5-15">{{ location }}</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</script>-->
-
-                    <!--<script id="real-estate-map-pop_profile" type="text/x-handlebars-template">-->
-                        <!--<div class="text-center">-->
-                            <!--<p>-->
-                                <!--<img src="{{ image }}" alt="" class="img-circle"/>-->
-                            <!--</p>-->
-                            <!--<h4><a href="{{ details_url }}" class="text-grey-700">{{ name }}</a>-->
-                            <!--</h4>-->
-                            <!--<a href="mailto:{{ email }}">{{ email }}</a>-->
-                            <!--<br/>-->
-                            <!--<p class="text-muted"><i class="fa fa-user fa-fw"></i>Agent <i-->
-                                    <!--class="fa fa-home fa-fw"></i>{{ no_properties }} Properties</p>-->
-                        <!--</div>-->
-                    <!--</script>-->
-
-                    <!--<script id="real-estate-map-pop_icon" type="text/x-handlebars-template">-->
-                        <!--<div>-->
-                            <!--<div class="text-center">-->
-                                <!--<div class="h1 text-grey-300">-->
-                                    <!--<i class="{{ inner_icon }}"></i>-->
-                                <!--</div>-->
-                                <!--<p><a href="{{ details_url }}" class="h4 text-primary">{{ name-->
-                                    <!--}}</a></p>-->
-                                <!--<p>{{ location }}</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</script>-->
-
                 </div>
                 <!-- /st-content-inner -->
 
@@ -858,18 +773,7 @@
     <script src="js/vendor/all.js"></script>
     <script src="js/bundle.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3&libraries=visualization&key=AIzaSyALJDYf2H96RBV3sMxU9TetIrNBSREnfMU&callback=googleMapsOnLoad"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function () {
-
-            setTimeout(function () {
-                $('body').addClass('loaded');
-                // $('h1').css('color', '#222222');
-            }, 2500);
-
-        });
-    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 </body>
 
 </html>
