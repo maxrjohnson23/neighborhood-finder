@@ -6,7 +6,10 @@ module.exports = function () {
         neighborHoodLayer: null,
         heatMap: null,
         mapLatLng: [],
-        mapMarkers: []
+        mapMarkers: [],
+        markerCluster: null,
+        updateMapMarkers: updateMapMarkers,
+        updateHeatMap: updateHeatMap
     };
 
     function toggleNeighborhoodOverlay(map) {
@@ -80,7 +83,6 @@ module.exports = function () {
             mapControls.heatMap.setMap(map);
         }
         $(this).toggleClass("active");
-
 
     });
 
@@ -156,60 +158,37 @@ module.exports = function () {
         $(this).toggleClass("active");
     });
 
-    // function centerPoint(markers) {
-    //     let newmarkers = markers.filter(m => {
-    //         return m.getMap();
-    //     }).map(m => {
-    //         return m.position;
-    //     });
-    //     console.log(newmarkers);
-    //     var dataset = [];
-    //
-    //     for (var i = 0; i < newmarkers.length; i++) {
-    //         dataset.push([newmarkers[i].lat(), newmarkers[i].lng()]);
-    //     }
-    //
-    //     var dbscan = new clustering.DBSCAN();
-    //     var clusters = dbscan.run(dataset, 1, 500);
-    //
-    //     if (clusters.length > 0) {
-    //
-    //         /* Find the biggest cluster */
-    //         var biggestCluster = clusters[0];
-    //
-    //         for (i = 1; i < clusters.length; i++) {
-    //
-    //             if (cluster[i].length > biggestCluster.length) {
-    //                 biggestCluster = cluster[i];
-    //             }
-    //         }
-    //
-    //         /* The output of the library contains the indexes of the points in the cluster, not the coordinates, so we need to get the point from the dataset */
-    //         var clusterPoints = [];
-    //         var sumx = 0;
-    //         var sumy = 0;
-    //
-    //         for (i = 0; i < biggestCluster.length; i++) {
-    //             var point = dataset[biggestCluster[i]];
-    //             clusterPoints.push(point);
-    //
-    //             /* It's also a good opportunity to cumulate x and y so we can get the average */
-    //             sumx += point[0];
-    //             sumy += point[1];
-    //         }
-    //
-    //         console.log('Cluster:', clusterPoints);
-    //         console.log('Center:', sumx / clusterPoints.length, sumy / clusterPoints.length);
-    //
-    //         let ll = new google.maps.LatLng(sumx / clusterPoints.length, sumy / clusterPoints.length);
-    //         let marker = new google.maps.Marker({
-    //             map: map,
-    //             position: ll
-    //         });
-    //     }
-    //
-    // }
-    //
-    // global.center = centerPoint;
+    $("#find-now").on("click", function () {
+
+        if(mapControls.markerCluster !== null && mapControls.markerCluster.getMarkers().length === 0) {
+            mapControls.markerCluster.clearMarkers();
+            let visibleMarkers = mapControls.mapMarkers.filter(m => {
+                return m.getMap();
+            });
+            map.data = visibleMarkers;
+        } else {
+            let visibleMarkers = mapControls.mapMarkers.filter(m => {
+                return m.getMap();
+            });
+            mapControls.markerCluster = new MarkerClusterer(map, visibleMarkers,
+                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+            mapControls.markerCluster.setCalculator(function (markers, numStyles) {
+                var index = 0;
+                var count = markers.length;
+                var dv = count;
+                while (dv !== 0) {
+                    dv = parseInt(dv / 10, 10);
+                    index++;
+                }
+
+                index = Math.min(index, numStyles);
+                return {
+                    text: ((count/visibleMarkers.length)*1000).toFixed(0),
+                    index: index
+                };
+            });
+        }
+
+    });
 
 };
