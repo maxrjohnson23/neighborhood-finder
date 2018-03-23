@@ -7,15 +7,14 @@
     "build": "webpack",
     "build:prod":"webpack -p",
     "watch": "webpack --watch",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "heroku-postbuild": "webpack -p --progress"
   },
   "dependencies": {
     "animate.css": "^3.6.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
-    "express-session": "^1.15.6",
     "group-array": "^0.3.3",
     "mysql2": "^1.5.2",
     "node-geocoder": "^3.22.0",
