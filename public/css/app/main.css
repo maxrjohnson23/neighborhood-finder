@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Open+Sans:400,600,300|Arapey|Varela+Round);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Open+Sans:400,600,300|Arapey|Varela+Round);
 body {
   font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -150,6 +150,10 @@ h6 small,
 #submitSurvey {
   background-color: #26a69a;
   color: #ebebeb;
+}
+
+#navbar-logo {
+  width: 180px;
 }
 
 
