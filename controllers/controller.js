@@ -25,9 +25,26 @@ router.post("/api/surveys", function (req, res) {
             geocodeLng: req.body.geocodeLng,
         }
     ).then(function (data) {
-        data.setHobbies(req.body.hobbies);
-        data.setSocials(req.body.social);
-        res.json({id: data.insertId});
+        console.log(data);
+        data.setHobbies(req.body.hobbies).then(() => {
+
+            data.setSocials(req.body.social).then(() => {
+                db.Surveys.findOne({where :{id: data.id}, raw: false, include: [{
+                        model: db.Hobbies,
+                        attributes: ['id'],
+                        through: { attributes: ['id'] }
+                    },{
+                        model: db.Social,
+                        attributes: ['id'],
+                        through: { attributes: ['id'] }
+                    }]}).then((data) => {
+                    console.log(data);
+                    res.json(data);
+
+                })
+            })
+        });
+
         // res.redirect("/");
     }).catch(function (err) {
         res.json(err);
