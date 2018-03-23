@@ -87,22 +87,29 @@ $(document).ready(function () {
 //     console.log(this.children)
 // })
 
+//right side-bar
+let charArr = [];
 $('body').on('click', '.check-label', function(e) {
     e.preventDefault();
-    let currentFilter = $(this).children();
-    let currentValue = currentFilter.attr('value');
+    // let checkArr = [];
+    let currentValue = $(this).children().attr('value');
+    console.log(currentValue);
+    getSelected()
 })
 
-function check() {
-    console.log('check')
-}
-    //right side-bar
-    function getSelected() {
-        let checkArr = [];
-    $("input:checkbox[name=nFilter]:checked").each(function(){
-        checkArr.push($(this).val());
-    });
-    return checkArr;
+
+    
+function getSelected() {
+    charArr = [];
+    charArr = $(".check-label input:checkbox:checked").map(function() {
+        return $(this).val()
+    }).get();
+    console.log(charArr);
+    // $("input:checkbox[name=nFilter]:checked").each(function(){
+    //         checkArr.push($(this).val());
+    // });
+    // console.log(checkArr);
+    // return checkArr;
 }
      //sign up
 //   $("#SubmitSignUp").on("click", function(submit){
