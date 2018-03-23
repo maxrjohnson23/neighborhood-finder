@@ -136,11 +136,13 @@ $(document).ready(function () {
   
   // Load aggregated neighborhood information when right side bar button
   // (aka 'hamburger' looking button) is clicked
-  $("#hamburger_button").on("click", function(){
+  $("#hamburger_button").on("click", function(submit){
+    submit.preventDefault();
     $.ajax({
         url: `/api/neighborhoods/`,
         type: "GET",
         success: function (data) {
+            console.log(data);
             for (item in data) {
                 // Returning neighborhood name and storing it in variable 'neighborhood_name'
                 var neighborhood_name = item;

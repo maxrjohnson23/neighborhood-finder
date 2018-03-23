@@ -12,10 +12,10 @@ router.post("/api/surveys", function (req, res) {
             State: req.body.state,
             Zip: req.body.zip,
             Age: req.body.age,
-            Industry: req.body.career,
+            Industry: req.body.industry,
             Income: req.body.income,
             Education: req.body.education,
-            Children: req.body.kids,
+            Children: req.body.children,
             Pets: req.body.pets,
             Relationship_Status: req.body.married,
             Car: req.body.car,
@@ -44,6 +44,7 @@ router.post("/api/surveys", function (req, res) {
                 })
             })
         });
+        res.json(data);
 
         // res.redirect("/");
     }).catch(function (err) {
