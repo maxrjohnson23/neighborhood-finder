@@ -88,28 +88,51 @@ $(document).ready(function () {
 // })
 
 //right side-bar
-let charArr = [];
+let checkArr = [];
 $('body').on('click', '.check-label', function(e) {
     e.preventDefault();
-    // let checkArr = [];
+    // let check = checkArr;
     let currentValue = $(this).children().attr('value');
     console.log(currentValue);
-    getSelected()
+    // $('body').on('change', '.active', function() {
+    //     getSelected();
+    //   });
+    setTimeout(function(){ getSelected() }, 500);
+    // getSelected()
+    // var promise = new Promise(function(resolve, reject) {
+      
+    //     if (check!== checkArr) {
+    //       resolve("Stuff worked!");
+    //     }
+    //     else {
+    //       reject(Error("It broke"));
+    //     }
+    //   });
+    //   promise.then(function(result) {
+    //     console.log(checkArr); // "Stuff worked!"
+    //   }, function(err) {
+    //     console.log(err); // Error: "It broke"
+    //   });
+
 })
 
 
     
 function getSelected() {
-    charArr = [];
-    charArr = $(".check-label input:checkbox:checked").map(function() {
+    checkArr = [];
+    checkArr = $(".check-label input:checkbox:checked").map(function() {
         return $(this).val()
     }).get();
-    console.log(charArr);
+    console.log(checkArr);
+    return(checkArr);
     // $("input:checkbox[name=nFilter]:checked").each(function(){
     //         checkArr.push($(this).val());
     // });
     // console.log(checkArr);
     // return checkArr;
+}
+function useArray(getSelected) {
+    console.log(arr);
 }
      //sign up
 //   $("#SubmitSignUp").on("click", function(submit){
