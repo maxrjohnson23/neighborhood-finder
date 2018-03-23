@@ -8,7 +8,7 @@ $(document).ready(function () {
         }
         hidePreloader();
         });
- console.log('loaded')
+
     function extractFromAddress(components, type){
         for (var i=0; i<components.length; i++)
             for (var j=0; j<components[i].types.length; j++)
@@ -69,13 +69,14 @@ $(document).ready(function () {
 
                 $.post("/api/surveys", newSurvey, function (data) {
 
-                    let hobbies = data.Hobbies.map(h => {
-                        return h.id
-                    });
-
+                    // Clear current map filters
                     mapControls.activeHobbies.clear();
                     mapControls.activeSocial.clear();
 
+                    // Set hobby filters from survey
+                    let hobbies = data.Hobbies.map(h => {
+                        return h.id
+                    });
                     for(let hobby of hobbies) {
                         mapControls.activeHobbies.add(hobby);
                         const $allHobbies = $(".sidebar-toggle[data-category='hobbies']");
@@ -85,9 +86,10 @@ $(document).ready(function () {
                             } else {
                                 $(this).addClass("active");
                             }
-                        })
+                        });
                     }
 
+                    // Set social filters from survey
                     let socials = data.Socials.map(s => {
                         return s.id
                     });
@@ -102,10 +104,10 @@ $(document).ready(function () {
                             }
                         });
 
-                        mapControls.updateMapMarkers();
-                        mapControls.updateHeatMap();
                     }
                     mapControls.updateMapMarkers();
+                    mapControls.updateHeatMap();
+
 
                 });
 
@@ -128,5 +130,4 @@ $(document).ready(function () {
       console.log(data);
     })
   });
-  console.log('main.js loaded')
 });

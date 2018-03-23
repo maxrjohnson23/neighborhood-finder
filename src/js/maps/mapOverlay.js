@@ -5,14 +5,15 @@ module.exports = function () {
     global.mapControls = {
         neighborHoodLayer: null,
         heatMap: null,
-        mapLatLng: [],
-        mapMarkers: [],
         markerCluster: null,
+        mapMarkers: [],
+        visibleMarkers: [],
         updateMapMarkers: updateMapMarkers,
         updateHeatMap: updateHeatMap
     };
 
-    function toggleNeighborhoodOverlay(map) {
+    // Add KML neighborhood overlay
+    function toggleNeighborhoodOverlay() {
         if (global.mapControls.neighborHoodLayer === null || global.mapControls.neighborHoodLayer.getMap() === null) {
             let neighborhoodLayer = new google.maps.KmlLayer({
                 url: 'http://chicagomap.zolk.com/sources/neighborhoods/source.kml',
@@ -41,34 +42,56 @@ module.exports = function () {
             }
             m.setMap((shouldDisplay) ? map : null);
         });
+        mapControls.visibleMarkers = mapControls.mapMarkers.filter(m => {
+            return m.getMap();
+        });
     }
 
     function createHeatMap() {
         // Display heatmap
+        let latLng = mapControls.visibleMarkers.map(m => {
+            return m.position;
+        });
         mapControls.heatMap = new google.maps.visualization.HeatmapLayer({
-            data: mapControls.mapLatLng,
+            data: latLng,
             map: map,
             radius: 30,
         });
     }
 
+    // Update heat map based on visible markers
     function updateHeatMap() {
         if (mapControls.heatMap && mapControls.heatMap.getMap()) {
 
-            mapControls.mapLatLng = mapControls.mapMarkers.filter(m => {
-                return m.getMap();
-            }).map(m => {
+            let latLng = mapControls.visibleMarkers.map(m => {
                 return m.position;
             });
-            mapControls.heatMap.setData(mapControls.mapLatLng);
+            console.log(latLng);
+            mapControls.heatMap.setData(latLng);
         }
     }
 
+    // Create marker cluster map
+    function createClusterMap(){
+        mapControls.markerCluster = new MarkerClusterer(map, mapControls.visibleMarkers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    }
+
+    // Remove cluster map and replace with marker dots
+    function removeClusterMap() {
+        if(mapControls.markerCluster) {
+            mapControls.markerCluster.clearMarkers();
+            mapControls.visibleMarkers.forEach(m => {
+                m.setMap(map);
+            });
+        }
+        $("#your-matches").removeClass("active");
+    }
 
     // Register overlay toggle
     $("#neighborhood-map").on('click', function () {
         $(this).toggleClass("active");
-        toggleNeighborhoodOverlay(global.map);
+        toggleNeighborhoodOverlay();
     });
 
     // Register heatmap toggle
@@ -79,13 +102,14 @@ module.exports = function () {
         if ($(this).hasClass("active")) {
             mapControls.heatMap.setMap(null);
         } else {
-            mapControls.heatMap.setData(mapControls.mapLatLng);
             mapControls.heatMap.setMap(map);
+            updateHeatMap();
         }
         $(this).toggleClass("active");
 
     });
 
+    // Register hobby toggle all
     $("#hobbies-all-toggle").on("click", function () {
         const $el = $(this);
 
@@ -98,14 +122,18 @@ module.exports = function () {
             $allHobbies.addClass("active");
             $allHobbies.each(function () {
                 let hobbyId = $(this).data("filter-id");
-                mapControls.activeSocial.add(hobbyId);
+                mapControls.activeHobbies.add(hobbyId);
             });
         }
+        // Update map and layers
         updateMapMarkers();
         updateHeatMap();
+        removeClusterMap();
+
         $el.toggleClass("active");
     });
 
+    // Register social toggle all
     $("#social-all-toggle").on("click", function () {
         const $el = $(this);
 
@@ -121,8 +149,11 @@ module.exports = function () {
                 mapControls.activeSocial.add(socialId);
             });
         }
+        // Update map and layers
         updateMapMarkers();
         updateHeatMap();
+        removeClusterMap();
+
         $el.toggleClass("active");
     });
 
@@ -150,43 +181,46 @@ module.exports = function () {
             }
         }
 
-        // Refresh map overlays
+        // Update map and layers
         updateMapMarkers();
         updateHeatMap();
-
+        removeClusterMap();
 
         $(this).toggleClass("active");
     });
 
-    $("#find-now").on("click", function () {
-
-        if(mapControls.markerCluster !== null && mapControls.markerCluster.getMarkers().length === 0) {
-            mapControls.markerCluster.clearMarkers();
-            let visibleMarkers = mapControls.mapMarkers.filter(m => {
-                return m.getMap();
-            });
-            map.data = visibleMarkers;
+    // Your matches toggle
+    $("#your-matches").on("click", function () {
+        if (!mapControls.markerCluster || !$(this).hasClass("active")) {
+            createClusterMap();
+            $(this).addClass("active");
         } else {
-            let visibleMarkers = mapControls.mapMarkers.filter(m => {
-                return m.getMap();
-            });
-            mapControls.markerCluster = new MarkerClusterer(map, visibleMarkers,
-                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-            mapControls.markerCluster.setCalculator(function (markers, numStyles) {
-                var index = 0;
-                var count = markers.length;
-                var dv = count;
-                while (dv !== 0) {
-                    dv = parseInt(dv / 10, 10);
-                    index++;
-                }
+            removeClusterMap()
+        }
 
-                index = Math.min(index, numStyles);
-                return {
-                    text: ((count/visibleMarkers.length)*1000).toFixed(0),
-                    index: index
-                };
-            });
+    });
+
+    // Clear map and reset all layers
+    $("#clear-map").on("click", function () {
+        mapControls.visibleMarkers.forEach(m => {
+            m.setMap(null);
+        });
+        mapControls.visibleMarkers = [];
+        mapControls.activeHobbies.clear();
+        mapControls.activeSocial.clear();
+        $(".sidebar-toggle[data-category='social']").removeClass("active");
+        $(".sidebar-toggle[data-category='hobbies']").removeClass("active");
+        $("#social-all-toggle").removeClass("active");
+        $("#hobbies-all-toggle").removeClass("active");
+        $("#your-matches").removeClass("active");
+        if (mapControls.heatMap) {
+            mapControls.heatMap.setMap(null);
+        }
+        if (mapControls.neighborHoodLayer) {
+            mapControls.neighborHoodLayer.setMap(null);
+        }
+        if(mapControls.markerCluster) {
+            mapControls.markerCluster.clearMarkers();
         }
 
     });
