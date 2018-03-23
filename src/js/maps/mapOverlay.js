@@ -14,15 +14,14 @@ module.exports = function () {
 
     // Add KML neighborhood overlay
     function toggleNeighborhoodOverlay() {
-        if (global.mapControls.neighborHoodLayer === null || global.mapControls.neighborHoodLayer.getMap() === null) {
-            let neighborhoodLayer = new google.maps.KmlLayer({
+        if (mapControls.neighborHoodLayer === null || mapControls.neighborHoodLayer.getMap() === null) {
+            mapControls.neighborHoodLayer = new google.maps.KmlLayer({
                 url: 'http://chicagomap.zolk.com/sources/neighborhoods/source.kml',
                 preserveViewport: true,
                 map: map
             });
-            global.mapControls.neighborHoodLayer = neighborhoodLayer;
         } else {
-            global.mapControls.neighborHoodLayer.setMap(null);
+            mapControls.neighborHoodLayer.setMap(null);
         }
     }
 
@@ -66,7 +65,6 @@ module.exports = function () {
             let latLng = mapControls.visibleMarkers.map(m => {
                 return m.position;
             });
-            console.log(latLng);
             mapControls.heatMap.setData(latLng);
         }
     }
