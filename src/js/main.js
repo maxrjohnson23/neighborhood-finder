@@ -7,7 +7,6 @@ $(document).ready(function () {
         }
         hidePreloader();
         });
- console.log('loaded')
     function extractFromAddress(components, type){
         for (var i=0; i<components.length; i++)
             for (var j=0; j<components[i].types.length; j++)
@@ -75,19 +74,49 @@ $(document).ready(function () {
 
     });
 
-     //sign up
-  $("#SubmitSignUp").on("click", function(submit){
-    submit.preventDefault();
-    let newUser = {
-      first_name: $('#InputFirstName').val(),
-      last_name: $('#InputLastName').val(),
-      email: $('#InputEmail').val(),
-      password: $('#InputPassword').val()
-    }
 
-    $.post('/signup', newUser, (data) => {
-      console.log(data);
-    })
-  });
+// $('.check-label').on('click', (e) => {
+//     e.preventDefault();
+//     console.log($(this).children())
+//     let answer = $('.check-label').find(':checkbox');
+//     console.log(answer)
+//     // let j = JSON.stringify(answer);
+//     // console.log(j);
+//     console.log('change');
+//     console.log(`${$(this)} changed`)
+//     console.log(this.children)
+// })
+
+$('body').on('click', '.check-label', function(e) {
+    e.preventDefault();
+    let currentFilter = $(this).children();
+    let currentValue = currentFilter.attr('value');
+})
+
+function check() {
+    console.log('check')
+}
+    //right side-bar
+    function getSelected() {
+        let checkArr = [];
+    $("input:checkbox[name=nFilter]:checked").each(function(){
+        checkArr.push($(this).val());
+    });
+    return checkArr;
+}
+     //sign up
+//   $("#SubmitSignUp").on("click", function(submit){
+//     submit.preventDefault();
+//     let newUser = {
+//       first_name: $('#InputFirstName').val(),
+//       last_name: $('#InputLastName').val(),
+//       email: $('#InputEmail').val(),
+//       password: $('#InputPassword').val()
+//     }
+
+//     $.post('/signup', newUser, (data) => {
+//       console.log(data);
+//     })
+//   });
   console.log('main.js loaded')
 });
