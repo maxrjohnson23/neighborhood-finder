@@ -133,9 +133,7 @@ $(document).ready(function () {
       console.log(data);
     })
   });
-<<<<<<< HEAD
-=======
-
+  
   // Load aggregated neighborhood information when right side bar button
   // (aka 'hamburger' looking button) is clicked
   $("#hamburger_button").on("click", function(){
@@ -163,5 +161,4 @@ $(document).ready(function () {
     });
 });
   console.log('main.js loaded')
->>>>>>> feature/neighborhoods_data
 });

@@ -77,7 +77,7 @@ router.get("/api/surveys", (req, res) => {
 // Query the surveys table and aggregate survey results based on
 // neighborhood, question, answer, count of answer
 
-Router.get("/api/neighborhoods", (req, res) => {
+router.get("/api/neighborhoods", (req, res) => {
     console.log('Returning neighborhoods');
     db.Surveys.sequelize.query(
                 `Select neighborhood,"education" as question,education as answer,Count(Education) as Count
