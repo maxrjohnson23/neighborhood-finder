@@ -22,6 +22,7 @@
 # [View Site](https://seventy7.herokuapp.com/ "Seventy7")
 
 
+![Seventy7 Survey](samples/screenshot3.png?raw=true "Seventy7 Survey")
 ![Seventy7 Heatmap](samples/screenshot.png?raw=true "Seventy7 Heatmap")
 ![Seventy7 Markers](samples/screenshot2.png?raw=true "Seventy7 Markers")
 
