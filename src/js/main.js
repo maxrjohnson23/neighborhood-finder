@@ -91,33 +91,12 @@ $(document).ready(function () {
 let checkArr = [];
 $('body').on('click', '.check-label', function(e) {
     e.preventDefault();
-    // let check = checkArr;
     let currentValue = $(this).children().attr('value');
     console.log(currentValue);
-    // $('body').on('change', '.active', function() {
-    //     getSelected();
-    //   });
     setTimeout(function(){ getSelected() }, 500);
-    // getSelected()
-    // var promise = new Promise(function(resolve, reject) {
-      
-    //     if (check!== checkArr) {
-    //       resolve("Stuff worked!");
-    //     }
-    //     else {
-    //       reject(Error("It broke"));
-    //     }
-    //   });
-    //   promise.then(function(result) {
-    //     console.log(checkArr); // "Stuff worked!"
-    //   }, function(err) {
-    //     console.log(err); // Error: "It broke"
-    //   });
-
+ 
 })
-
-
-    
+   
 function getSelected() {
     checkArr = [];
     checkArr = $(".check-label input:checkbox:checked").map(function() {
@@ -131,22 +110,49 @@ function getSelected() {
     // console.log(checkArr);
     // return checkArr;
 }
-function useArray(getSelected) {
-    console.log(arr);
-}
-     //sign up
-//   $("#SubmitSignUp").on("click", function(submit){
-//     submit.preventDefault();
-//     let newUser = {
-//       first_name: $('#InputFirstName').val(),
-//       last_name: $('#InputLastName').val(),
-//       email: $('#InputEmail').val(),
-//       password: $('#InputPassword').val()
-//     }
 
-//     $.post('/signup', newUser, (data) => {
-//       console.log(data);
-//     })
-//   });
+function renderNeighborhoods(){
+    let keys = Object.keys(surveys); 
+    keys.forEach(x => {
+        let panel = $('<div class="panel panel-default">');
+        let panelHead = $(`<div class="panel-heading" role="tab" id="${x.replace(/\s+/g, '')}Heading">`);
+        let title = $('<h4 class="panel-title">').text(x);
+        let panelTable = $(`<table class="table" id="${x.replace(/\s+/g, '')}table">`);
+        let tableHead = $(`<thead>`);
+        let headRow = $(`<tr id="${x.replace(/\s+/g, '')}HeadRow">`);
+        let tableBody = $(`<tbody id="${x.replace(/\s+/g, '')}Body">`)
+        let tableRow = $(`<tr id="${x.replace(/\s+/g, '')}Row">`)
+        panel.html(panelHead);
+        panelHead.html(title);
+        panel.append(panelTable);
+        panelTable.html(tableHead);
+        tableHead.html(headRow);
+        panelTable.append(tableBody);
+        tableBody.html(tableRow);
+        $('.container').append(panel);
+    })
+}
+
+function renderData() {
+    let neighborhoods = Object.keys(surveys);
+    neighborhoods.forEach(x => {
+
+        let entries = Object.entries(surveys[x]);
+        console.log(`data entries = ${entries}`);
+        entries.forEach(y => {
+            let keys = y[0];
+            let answerValues = y[1][0].answer;
+            let countValues = y[1][0].Count;
+            let header = $('<th>');
+            header.text(keys);
+            let td = $('<td>');
+            td.text(`${answerValues}: ${countValues}`);
+            let targetID = x.replace(/\s+/g, '');
+            $(`#${targetID}HeadRow`).append(header);
+            $(`#${targetID}Row`).append(td);
+        })
+    })
+}
+
   console.log('main.js loaded')
 });
