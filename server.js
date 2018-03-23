@@ -7,8 +7,8 @@ var app = express();
 var passport = require('passport');
 var session = require('express-session');
 var routes = require("./controllers/controller.js");
-var authRoutes = require('./controllers/authController');
-var authRed = require('./authRoutes/auth')(app);
+// var authRoutes = require('./controllers/authController');
+// var authRed = require('./authRoutes/auth')(app);
 var db = require("./models");
 
 var PORT = process.env.PORT || 3000;
