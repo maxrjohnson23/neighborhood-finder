@@ -1,5 +1,8 @@
 
 $(document).ready(function () {
+    setTimeout(function () {
+        $('body').addClass('loaded');
+    }, 2500);
     $(window).on("load", function() {
         preloaderFadeOutTime = 300;
         function hidePreloader() {
