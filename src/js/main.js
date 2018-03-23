@@ -164,7 +164,7 @@ function getSelected() {
     // return checkArr;
 }
 
-function renderNeighborhoods(){
+function renderNeighborhoods(surveys){
     let keys = Object.keys(surveys); 
     keys.forEach(x => {
         let panel = $('<div class="panel panel-default">');
@@ -182,11 +182,12 @@ function renderNeighborhoods(){
         tableHead.html(headRow);
         panelTable.append(tableBody);
         tableBody.html(tableRow);
-        $('.container').append(panel);
+        $('.filter-section').append(panel);
+        renderData(surveys)
     })
 }
 
-function renderData() {
+function renderData(surveys) {
     let neighborhoods = Object.keys(surveys);
     neighborhoods.forEach(x => {
 
@@ -218,6 +219,7 @@ function renderData() {
             url: `/api/neighborhoods/`,
             type: "GET",
             success: function (data) {
+                renderNeighborhoods(data);
                 console.log(data);
                 for (item in data) {
                     // Returning neighborhood name and storing it in variable 'neighborhood_name'
