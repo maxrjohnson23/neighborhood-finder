@@ -299,11 +299,11 @@ function renderData(surveys) {
             let td = $('<td>');
             td.text(`${answerValues}: ${countValues}`);
             let targetID = x.replace(/\s+/g, '');
-            if($(`#${targetID}HeadRow`).children().length < 8){
+            if($(`#${targetID}HeadRow`).children().length <= 8){
                 $(`#${targetID}HeadRow`).append(header);
                 $(`#${targetID}HeadRow`).closest('.sortable-panel').data('sortBy', countValues);
             }
-            if($(`#${targetID}HeadRow`).children().length < 8){
+            if($(`#${targetID}HeadRow`).children().length <= 8){
                 $(`#${targetID}Row`).append(td);
             }
         })
