@@ -66,6 +66,7 @@ db.sequelize.sync().then(function () {
         db.Surveys.create({
             geocodeLat: a.lat,
             geocodeLng: a.lng,
+            Neighborhood: a.neighborhood,
             Address: address,
             Street: address + " Main Street",
             City: "Chicago",
