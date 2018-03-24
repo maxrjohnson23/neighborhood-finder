@@ -157,18 +157,14 @@ function getSelected() {
     }).get();
     console.log(checkArr);
     return(checkArr);
-    // $("input:checkbox[name=nFilter]:checked").each(function(){
-    //         checkArr.push($(this).val());
-    // });
-    // console.log(checkArr);
-    // return checkArr;
+    sortList(checkArr);
 }
 
 function renderNeighborhoods(surveys){
     let keys = Object.keys(surveys); 
     keys.forEach(x => {
-        let panel = $('<div class="panel panel-default">');
-        let panelHead = $(`<div class="panel-heading" role="tab" id="${x.replace(/\s+/g, '')}Heading">`);
+        let panel = $('<div class="panel panel-default sortable-panel" data="">');
+        let panelHead = $(`<div class="panel-heading panelHead" role="tab" id="${x.replace(/\s+/g, '')}Heading">`);
         let title = $('<h4 class="panel-title">').text(x);
         let panelTable = $(`<table class="table" id="${x.replace(/\s+/g, '')}table">`);
         let tableHead = $(`<thead>`);
@@ -182,10 +178,29 @@ function renderNeighborhoods(surveys){
         tableHead.html(headRow);
         panelTable.append(tableBody);
         tableBody.html(tableRow);
+        panelHead.css('background-color', '#26a69a')
+        tableRow.css('border-top', '1px solid #26a69a')
         $('.filter-section').append(panel);
         renderData(surveys)
+        let styles = document.createElement('link');
+        styles.rel = 'stylesheet';
+        styles.type = 'text/css';
+        styles.href = 'css/app/side-bar-right.css';
+        document.getElementsByTagName('head')[0].appendChild(styles);
     })
 }
+
+function sortList(checkArr) {
+    let section = $('.filter-section');
+    let list = $('filter-section').children('.sortable-panel');
+
+    list.detach().sort((a, b) => {
+        return $(a).data('sortBy') - $(b).data('sortBy');
+    });
+
+    section.append(list);
+}
+
 
 function renderData(surveys) {
     let neighborhoods = Object.keys(surveys);
@@ -204,6 +219,7 @@ function renderData(surveys) {
             let targetID = x.replace(/\s+/g, '');
             if($(`#${targetID}HeadRow`).children().length < 8){
                 $(`#${targetID}HeadRow`).append(header);
+                $(`#${targetID}HeadRow`).closest('.sortable-panel').data('sortBy', countValues);
             }
             if($(`#${targetID}HeadRow`).children().length < 8){
                 $(`#${targetID}Row`).append(td);
