@@ -157,12 +157,9 @@ function getSelected() {
     }).get();
     console.log(checkArr);
     return(checkArr);
-    // $("input:checkbox[name=nFilter]:checked").each(function(){
-    //         checkArr.push($(this).val());
-    // });
-    // console.log(checkArr);
-    // return checkArr;
+    sortList(checkArr);
 }
+
 
 // function renderNeighborhoods(surveys){
 //     $('.filter-section').empty();
@@ -244,6 +241,75 @@ function renderData(neighborhood, question, answer, count) {
     // $(`#${neighborhood_name}HeadRow`).append(header);
     // $(`#${neighborhood_name}Row`).append(td);
 };
+
+function renderNeighborhoods(surveys){
+    let keys = Object.keys(surveys); 
+    keys.forEach(x => {
+        let panel = $('<div class="panel panel-default sortable-panel" data="">');
+        let panelHead = $(`<div class="panel-heading panelHead" role="tab" id="${x.replace(/\s+/g, '')}Heading">`);
+        let title = $('<h4 class="panel-title">').text(x);
+        let panelTable = $(`<table class="table" id="${x.replace(/\s+/g, '')}table">`);
+        let tableHead = $(`<thead>`);
+        let headRow = $(`<tr id="${x.replace(/\s+/g, '')}HeadRow">`);
+        let tableBody = $(`<tbody id="${x.replace(/\s+/g, '')}Body">`)
+        let tableRow = $(`<tr id="${x.replace(/\s+/g, '')}Row">`)
+        panel.html(panelHead);
+        panelHead.html(title);
+        panel.append(panelTable);
+        panelTable.html(tableHead);
+        tableHead.html(headRow);
+        panelTable.append(tableBody);
+        tableBody.html(tableRow);
+        panelHead.css('background-color', '#26a69a')
+        tableRow.css('border-top', '1px solid #26a69a')
+        $('.filter-section').append(panel);
+        renderData(surveys)
+        let styles = document.createElement('link');
+        styles.rel = 'stylesheet';
+        styles.type = 'text/css';
+        styles.href = 'css/app/side-bar-right.css';
+        document.getElementsByTagName('head')[0].appendChild(styles);
+    })
+}
+
+function sortList(checkArr) {
+    let section = $('.filter-section');
+    let list = $('filter-section').children('.sortable-panel');
+
+    list.detach().sort((a, b) => {
+        return $(a).data('sortBy') - $(b).data('sortBy');
+    });
+
+    section.append(list);
+}
+
+
+function renderData(surveys) {
+    let neighborhoods = Object.keys(surveys);
+    neighborhoods.forEach(x => {
+
+        let entries = Object.entries(surveys[x]);
+        console.log(`data entries = ${entries}`);
+        entries.forEach(y => {
+            let keys = y[0];
+            let answerValues = y[1][0].answer;
+            let countValues = y[1][0].Count;
+            let header = $('<th>');
+            header.text(keys);
+            let td = $('<td>');
+            td.text(`${answerValues}: ${countValues}`);
+            let targetID = x.replace(/\s+/g, '');
+            if($(`#${targetID}HeadRow`).children().length < 8){
+                $(`#${targetID}HeadRow`).append(header);
+                $(`#${targetID}HeadRow`).closest('.sortable-panel').data('sortBy', countValues);
+            }
+            if($(`#${targetID}HeadRow`).children().length < 8){
+                $(`#${targetID}Row`).append(td);
+            }
+        })
+    })
+}
+
 
   console.log('main.js loaded')
 
