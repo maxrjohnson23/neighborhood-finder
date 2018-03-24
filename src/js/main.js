@@ -147,7 +147,7 @@ $('body').on('click', '.check-label', function(e) {
     let currentValue = $(this).children().attr('value');
     console.log(currentValue);
     setTimeout(function(){ getSelected() }, 500);
- 
+
 })
    
 function getSelected() {
@@ -159,6 +159,88 @@ function getSelected() {
     return(checkArr);
     sortList(checkArr);
 }
+
+
+// function renderNeighborhoods(surveys){
+//     $('.filter-section').empty();
+//     let keys = Object.keys(surveys); 
+//     keys.forEach(x => {
+//         let panel = $('<div class="panel panel-default">');
+//         let panelHead = $(`<div class="panel-heading" role="tab" id="${x.replace(/\s+/g, '')}Heading">`);
+//         let title = $('<h4 class="panel-title">').text(x);
+//         let panelTable = $(`<table class="table" id="${x.replace(/\s+/g, '')}table">`);
+//         let tableHead = $(`<thead>`);
+//         let headRow = $(`<tr id="${x.replace(/\s+/g, '')}HeadRow">`);
+//         let tableBody = $(`<tbody id="${x.replace(/\s+/g, '')}Body">`)
+//         let tableRow = $(`<tr id="${x.replace(/\s+/g, '')}Row">`)
+//         panel.html(panelHead);
+//         panelHead.html(title);
+//         panel.append(panelTable);
+//         panelTable.html(tableHead);
+//         tableHead.html(headRow);
+//         panelTable.append(tableBody);
+//         tableBody.html(tableRow);
+//         $('.filter-section').append(panel);
+//         renderData(surveys)
+//     })                        
+// }
+function renderNeighborhoods(neighborhood){
+    // Must remove spaces so that the id will work properly
+    var neighborhood_name = neighborhood.replace(/\s/g,'');
+    let panel = $(`<div class="panel panel-default" id="${neighborhood_name}Panel">`);
+    let panelHead = $(`<div class="panel-heading" role="tab" id="${neighborhood_name}Heading">`);
+    let title = $('<h4 class="panel-title">').text(neighborhood_name);
+    let panelTable = $(`<table class="table" id="${neighborhood_name}table">`);
+    let tableHead = $(`<thead>`);
+    let headRow = $(`<tr id="${neighborhood_name}HeadRow">`);
+    let headColumns = $(`<th>Age</th><th>Marital Status</th><th>Children</th><th>Pets</th><th>Car</th><th>Career Industry</th><th>Income Range</th><th>Education</th>`)
+    let tableBody = $(`<tbody id="${neighborhood_name}Body">`)
+    let tableRow = $(`<tr id="${neighborhood_name}Row">`)
+    panel.html(panelHead);
+    panelHead.html(title);
+    panel.append(panelTable);
+    panelTable.html(tableHead);
+    tableHead.html(headRow);
+    headRow.html(headColumns);
+    panelTable.append(tableBody);
+    tableBody.html(tableRow);
+    $('.filter-section').append(panel);                  
+};
+
+// function renderData(surveys) {
+//     let neighborhoods = Object.keys(surveys);
+//     neighborhoods.forEach(x => {
+
+//         let entries = Object.entries(surveys[x]);
+//         // console.log(`data entries = ${entries}`);
+//         entries.forEach(y => {
+//             let keys = y[0];
+//             let answerValues = y[1][0].answer;
+//             let countValues = y[1][0].Count;
+//             let header = $('<th>');
+//             header.text(keys);
+//             let td = $('<td>');
+//             td.text(`${answerValues}: ${countValues}`);
+//             let targetID = x.replace(/\s+/g, '');
+//             if($(`#${targetID}HeadRow`).children().length < 8){
+//                 $(`#${targetID}HeadRow`).append(header);
+//             }
+//             if($(`#${targetID}HeadRow`).children().length < 8){
+//                 $(`#${targetID}Row`).append(td);
+//             }
+//         })
+//     })
+// }
+function renderData(neighborhood, question, answer, count) {
+    // Must remove spaces so that the id will work properly
+    // var neighborhood_name = neighborhood.replace(/\s/g,'');
+    // let header = $('<th>');
+    // header.text(question);
+    // let td = $('<td>');
+    // td.text(`${answer}: ${count}`);
+    // $(`#${neighborhood_name}HeadRow`).append(header);
+    // $(`#${neighborhood_name}Row`).append(td);
+};
 
 function renderNeighborhoods(surveys){
     let keys = Object.keys(surveys); 
@@ -228,6 +310,7 @@ function renderData(surveys) {
     })
 }
 
+
   console.log('main.js loaded')
 
 
@@ -239,21 +322,23 @@ function renderData(surveys) {
             url: `/api/neighborhoods/`,
             type: "GET",
             success: function (data) {
-                renderNeighborhoods(data);
                 console.log(data);
                 for (item in data) {
                     // Returning neighborhood name and storing it in variable 'neighborhood_name'
                     var neighborhood_name = item;
+                    renderNeighborhoods(neighborhood_name);
                     console.log(`Neighborhood: ${neighborhood_name}`)
                     for (subItem in data[item]) {
                         data[item][subItem].forEach((a) => {
                             // Storing each question, answer, and count of those answers (per neighborhood)
                             // to variables 'question', 'answer', and  'count'.
                             // Note that a.Count has a capital 'C' while the variable name has a lower case 'c'
-                            var question = a.question;
-                            var answer = a.answer;
-                            var count = a.Count;
-                            console.log(`${question} : ${answer} [${count}]`)
+                            // var neighborhood = neighborhood_name;
+                            // var question = a.question;
+                            // var answer = a.answer;
+                            // var count = a.Count;
+                            // renderData(neighborhood,question,answer,count);
+                            // console.log(`${question} : ${answer} [${count}]`)
                         });
                     }
                 }
